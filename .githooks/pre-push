@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+# ── Bloque le push direct sur main/uat/dev : tout doit passer par une PR revue ──
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/uat|refs/heads/dev)
+      branch=${remote_ref#refs/heads/}
+      if [ "$ALLOW_PROTECTED_PUSH" != "1" ]; then
+        echo "\n✗ [ui-design-system pre-push] Push direct sur '$branch' interdit — passe par une Pull Request revue."
+        echo "  git push origin HEAD:refs/heads/ma-branche   puis   gh pr create --base $branch\n"
+        exit 1
+      fi
+      ;;
+  esac
+done
+
+echo "\n⏳ [ui-design-system pre-push] Build (tsc -b)..."
+npm run build
+
+echo "\n✅ [ui-design-system pre-push] OK\n"
