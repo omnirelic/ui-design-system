@@ -6,7 +6,23 @@ export { QrCard } from "./QrCard";
 export type { QrCardProps } from "./QrCard";
 export { InfoRow } from "./InfoRow";
 export type { InfoRowProps } from "./InfoRow";
-export { IconKey, IconClock, IconTruck, IconReceipt, IconUser, IconMail, IconPin, IconPhone } from "./icons";
+export {
+  IconKey,
+  IconClock,
+  IconTruck,
+  IconReceipt,
+  IconUser,
+  IconMail,
+  IconPin,
+  IconPhone,
+  IconFood,
+  IconPrinter,
+  IconLaundry,
+  IconCart,
+  IconPackage,
+  IconBroom,
+  IconChevronDown,
+} from "./icons";
 export { PublicHeader } from "./PublicHeader";
 export type { PublicHeaderProps } from "./PublicHeader";
 export { PublicShell } from "./PublicShell";

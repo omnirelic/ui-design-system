@@ -98,3 +98,76 @@ export function IconPhone(props: IconProps) {
     </Svg>
   );
 }
+
+// ── Icônes de service (MACRO_SERVICE_CTA — capabilities.ts) ────────────────
+// Un CTA par GlobalService actif sur un lieu, jamais un unique bouton
+// générique — voir capabilities.ts. Mêmes emoji remplacés par les mêmes
+// traits que le reste de la page pour rester visuellement cohérent.
+
+export function IconFood(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M8 8v3a1.5 1.5 0 0 0 3 0V8M9.5 11v5M16 8v9M14.5 8c0 1.7 1.5 2 1.5 3.5V8" />
+    </Svg>
+  );
+}
+
+export function IconPrinter(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M6 8V4h12v4" />
+      <rect x="4" y="8" width="16" height="8" rx="1.5" />
+      <path d="M7 14h10v6H7z" />
+    </Svg>
+  );
+}
+
+export function IconLaundry(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3.5" y="3" width="17" height="18" rx="2" />
+      <circle cx="12" cy="13" r="5" />
+      <path d="M9.5 13a2.5 2.5 0 0 0 5 0M6.5 6h.01M9.5 6h.01" />
+    </Svg>
+  );
+}
+
+export function IconCart(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M3 4h2l2.2 11h10.6L20 8H7.2" />
+      <circle cx="9.5" cy="20" r="1.4" />
+      <circle cx="17" cy="20" r="1.4" />
+    </Svg>
+  );
+}
+
+export function IconPackage(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 3 4 7v10l8 4 8-4V7z" />
+      <path d="M4 7l8 4 8-4M12 11v10" />
+    </Svg>
+  );
+}
+
+export function IconBroom(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M20 4 10 14" />
+      <path d="M9 13 4 20l3-1 1.5 1.5L10 19l-1-3z" />
+      <path d="M13 11l3.5 3.5" />
+    </Svg>
+  );
+}
+
+// Remplace le glyphe texte "▼" (rendu incohérent selon police) dans les
+// sélecteurs custom des vues publiques.
+export function IconChevronDown(props: IconProps) {
+  return (
+    <Svg {...props} strokeWidth={2.25}>
+      <path d="m6 9 6 6 6-6" />
+    </Svg>
+  );
+}
