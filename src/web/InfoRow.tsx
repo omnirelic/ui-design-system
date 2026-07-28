@@ -1,11 +1,12 @@
+import type { ReactNode } from "react";
 import { ACCENT, TXT, DIM2, BORDER, MONO } from "./theme";
 
-export type InfoRowProps = { icon: string; label: string; value: string; href?: string; highlight?: boolean };
+export type InfoRowProps = { icon: ReactNode; label: string; value: string; href?: string; highlight?: boolean };
 
 export function InfoRow({ icon, label, value, href, highlight }: InfoRowProps) {
   return (
     <div style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "10px 0", borderBottom: `1px solid ${BORDER}` }}>
-      <span style={{ fontSize: 16, lineHeight: 1.4, flexShrink: 0 }}>{icon}</span>
+      <span style={{ display: "flex", color: DIM2, lineHeight: 1.4, flexShrink: 0, marginTop: 1 }}>{icon}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 10, color: DIM2, letterSpacing: 1, marginBottom: 2, fontFamily: MONO }}>{label.toUpperCase()}</div>
         {href ? (
