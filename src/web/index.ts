@@ -6,6 +6,8 @@ export { QrCard } from "./QrCard";
 export type { QrCardProps } from "./QrCard";
 export { InfoRow } from "./InfoRow";
 export type { InfoRowProps } from "./InfoRow";
+export { Reactive } from "./Reactive";
+export type { ReactiveVariant } from "./Reactive";
 export {
   IconKey,
   IconClock,
