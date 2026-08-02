@@ -28,16 +28,21 @@ const VARIANT_CSS: Record<ReactiveVariant, (cls: string) => string> = {
     @media (prefers-reduced-motion: reduce) { .${cls} { animation: none; } }
   `,
   // Bouton contour/texte (PARTAGER) — remplissage léger au survol.
+  // !important sur les propriétés de couleur : chaque appelant fixe déjà
+  // background/border/color en style inline (layout au repos) — un style
+  // inline gagne toujours sur une règle de classe, :hover inclus, donc sans
+  // !important ces états resteraient invisibles (bug constaté et corrigé
+  // ici, cf. vérification hover sur PublicHeader).
   ghost: (cls) => `
     .${cls} { transition: background 140ms ease, border-color 140ms ease, color 140ms ease; }
-    .${cls}:hover { background: #5eead41a; border-color: #5eead488; color: #5eead4; }
+    .${cls}:hover { background: #5eead41a !important; border-color: #5eead488 !important; color: #5eead4 !important; }
     .${cls}:active { transform: scale(0.96); }
     .${cls}:focus-visible { outline: 2px solid #5eead4; outline-offset: 2px; }
   `,
   // Bouton rond icône seule (flèches galerie, partager mobile).
   icon: (cls) => `
     .${cls} { transition: background 140ms ease, color 140ms ease, transform 140ms ease; }
-    .${cls}:hover { background: #ffffff14; color: #5eead4; }
+    .${cls}:hover { background: #ffffff14 !important; color: #5eead4 !important; }
     .${cls}:active { transform: scale(0.88); }
     .${cls}:focus-visible { outline: 2px solid #5eead4; outline-offset: 2px; }
   `,
@@ -51,7 +56,7 @@ const VARIANT_CSS: Record<ReactiveVariant, (cls: string) => string> = {
   // Carte cliquable (lien carte/adresse) — léger soulèvement.
   card: (cls) => `
     .${cls} { transition: border-color 140ms ease, background 140ms ease, transform 140ms ease; }
-    .${cls}:hover { border-color: #5eead488; background: #5eead40d; }
+    .${cls}:hover { border-color: #5eead488 !important; background: #5eead40d !important; }
     .${cls}:active { transform: scale(0.99); }
     .${cls}:focus-visible { outline: 2px solid #5eead4; outline-offset: 2px; }
   `,

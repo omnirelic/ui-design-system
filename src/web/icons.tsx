@@ -171,3 +171,43 @@ export function IconChevronDown(props: IconProps) {
     </Svg>
   );
 }
+
+// ── Icônes InfoRow des vues preview /o /k /b /v /p (ParcelPage, ContainerPage,
+// VehiclePage, PromoPage) — mêmes raisons que ci-dessus : rendu identique sur
+// tout OS, pas de fallback tofu selon la police système.
+
+export function IconBuilding(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="5" y="3" width="14" height="18" rx="1" />
+      <path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h.01M15 16h.01" />
+    </Svg>
+  );
+}
+
+export function IconCalendar(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="3.5" y="5" width="17" height="15" rx="2" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </Svg>
+  );
+}
+
+export function IconBadge(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="9" r="5.5" />
+      <path d="M8.5 13.5 7 21l5-2.5 5 2.5-1.5-7.5" />
+    </Svg>
+  );
+}
+
+export function IconChart(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M4 20V10M12 20V4M20 20v-7" />
+      <path d="M2.5 20h19" />
+    </Svg>
+  );
+}
