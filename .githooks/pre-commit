@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+# ── Règle : une branche par PR — jamais de commit local sur dev/uat/main ─────
+branch="$(git symbolic-ref --short HEAD 2>/dev/null || echo "")"
+if [ "$branch" = "dev" ] || [ "$branch" = "uat" ] || [ "$branch" = "main" ]; then
+  if [ "$ALLOW_PROTECTED_COMMIT" != "1" ]; then
+    echo ""
+    echo "⛔ [ui-design-system pre-commit] Commit direct sur '$branch' interdit — une branche par PR :"
+    echo "   git switch -c feat/mon-sujet    # puis commit + gh pr create --base dev"
+    echo "   Bypass exceptionnel : ALLOW_PROTECTED_COMMIT=1 git commit …"
+    echo ""
+    exit 1
+  fi
+fi
+
+echo "\n⏳ [ui-design-system pre-commit] Build (tsc -b)..."
+npm run build
+
+echo "\n✅ [ui-design-system pre-commit] OK\n"

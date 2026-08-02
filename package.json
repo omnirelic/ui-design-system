@@ -18,6 +18,7 @@
   },
   "files": ["dist"],
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks",
     "build": "tsc -b",
     "dev": "tsc -b --watch"
   },
