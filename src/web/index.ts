@@ -24,6 +24,10 @@ export {
   IconPackage,
   IconBroom,
   IconChevronDown,
+  IconBuilding,
+  IconCalendar,
+  IconBadge,
+  IconChart,
 } from "./icons";
 export { PublicHeader } from "./PublicHeader";
 export type { PublicHeaderProps } from "./PublicHeader";
