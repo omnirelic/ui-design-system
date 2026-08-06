@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web aujourd'hui, React Native demain) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
