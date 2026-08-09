@@ -15,6 +15,6 @@ if [ "$branch" = "dev" ] || [ "$branch" = "uat" ] || [ "$branch" = "main" ]; the
 fi
 
 echo "\n⏳ [ui-design-system pre-commit] Build (tsc -b)..."
-npm run build
+pnpm run build
 
 echo "\n✅ [ui-design-system pre-commit] OK\n"

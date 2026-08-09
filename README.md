@@ -21,6 +21,6 @@ import { QrCard } from '@omnirelic/ui-design-system';
 ## Développement
 
 ```bash
-npm install
-npm run build
+pnpm install
+pnpm run build
 ```

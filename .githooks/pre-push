@@ -16,6 +16,6 @@ while read -r local_ref local_sha remote_ref remote_sha; do
 done
 
 echo "\n⏳ [ui-design-system pre-push] Build (tsc -b)..."
-npm run build
+pnpm run build
 
 echo "\n✅ [ui-design-system pre-push] OK\n"
