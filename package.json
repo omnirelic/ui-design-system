@@ -1,8 +1,8 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
-  "description": "Identité visuelle omnirelic — tokens + composants React (web aujourd'hui, React Native demain) consommés par tous les providers du réseau.",
+  "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -13,6 +13,10 @@
     "./tokens": {
       "types": "./dist/tokens.d.ts",
       "default": "./dist/tokens.js"
+    },
+    "./native": {
+      "types": "./dist/native/index.d.ts",
+      "default": "./dist/native/index.js"
     }
   },
   "files": ["dist"],
@@ -25,12 +29,27 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-qr-code": ">=2"
+    "react-qr-code": ">=2",
+    "react-native": ">=0.73",
+    "react-native-svg": ">=14",
+    "expo-camera": ">=15",
+    "expo-linear-gradient": ">=13"
+  },
+  "peerDependenciesMeta": {
+    "react-qr-code": { "optional": true },
+    "react-native": { "optional": true },
+    "react-native-svg": { "optional": true },
+    "expo-camera": { "optional": true },
+    "expo-linear-gradient": { "optional": true }
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
     "react": "^18.3.1",
     "react-qr-code": "^2.2.0",
+    "react-native": "^0.76.9",
+    "react-native-svg": "^15.8.0",
+    "expo-camera": "^16.0.18",
+    "expo-linear-gradient": "^14.0.2",
     "typescript": "^5.6.3"
   }
 }
