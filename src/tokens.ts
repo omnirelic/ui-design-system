@@ -28,17 +28,35 @@ export const alpha = {
   t1_40: "#5eead440",
   t1_55: "#5eead455",
   t1_88: "#5eead488",
-  danger_22: "#fb718522",
-  danger_55: "#fb718555",
-  warn_22: "#fbbf2422",
-  warn_55: "#fbbf2455",
+  danger_22: "#F43F5E22",
+  danger_55: "#F43F5E55",
+  warn_22: "#FF9F4322",
+  warn_55: "#FF9F4355",
 } as const;
 
+// success/warning/danger volontairement DISTINCTS de l'accent de marque
+// (t1/t2) — un système sémantique à 3 teintes propres (vert « livré/OK »,
+// orange « attention », rose « erreur »), jamais une redite de l'accent.
+// Choix venu de l'app courier (seule à avoir formalisé cette distinction
+// avant l'unification réseau — voir omnirelic/mobile) — canonique pour
+// TOUT le réseau désormais, web comme native.
 export const semantic = {
-  success: colors.t1,
-  warning: "#fbbf24",
-  danger: "#fb7185",
+  success: "#34D399",
+  warning: "#FF9F43",
+  danger: "#F43F5E",
   info: colors.t2,
+} as const;
+
+// Teintes dérivées additionnelles — PAS dans `colors` (celui-ci reste le
+// miroir exact de web/src/index.css `:root`, jamais étendu sans y toucher
+// aussi). Ajoutées en unifiant courier/producer/packager (voir
+// omnirelic/mobile) — surface élevée (cartes en avant-plan), variantes
+// pressées/sombres de l'accent et du succès, voile de modale.
+export const shades = {
+  panelElevated: "#20202B",
+  accentDark: "#0EA5E9",
+  successDark: "#10B981",
+  overlay: "rgba(0,0,0,0.72)",
 } as const;
 
 // `fontDisplay`/`fontBody` = familles de police seules (le nom, sans

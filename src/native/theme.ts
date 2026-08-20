@@ -7,12 +7,13 @@
 // d'équivalent dans tokens.ts (pas de fond translucide "rouge sombre" ni de
 // "texte sur accent" cross-platform) — dérivés ici, RN uniquement, comme
 // web/theme.ts dérive ses propres alias `var()`.
-import { colors, semantic } from "../tokens";
+import { colors, semantic, shades } from "../tokens";
 
 export const theme = {
   bg: colors.bg,
   bg2: colors.bg2,
   panel: colors.panel,
+  panelElevated: shades.panelElevated,
   line: colors.line,
   text: colors.txt,
   dim: colors.dim,
@@ -20,11 +21,14 @@ export const theme = {
   t1: colors.t1,
   t2: colors.t2,
   accent: colors.accent,
+  accentDark: shades.accentDark,
   danger: semantic.danger,
   dangerBg: "#3f1d1d",
   success: semantic.success,
+  successDark: shades.successDark,
   warn: semantic.warning,
   onAccent: "#06181c",
+  overlay: shades.overlay,
 } as const;
 
 export type Theme = typeof theme;

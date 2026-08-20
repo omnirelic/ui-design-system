@@ -1,38 +1,42 @@
 /**
- * LogoMark + badges de contexte dans les coins bas — remplace les 3 copies
- * quasi-identiques qui existaient par app (courier/producer/packager, avant
- * ce package). Volontairement générique : le mark ne connaît AUCUN acteur
- * ni bibliothèque d'icônes (courier utilisait Phosphor, producer/packager
- * de l'emoji brut) — l'appelant passe son propre badge en `ReactNode`
- * (icône, emoji, ce qu'il veut), ce composant ne fait que le positionner.
+ * LogoMark + badges de contexte dans les coins bas — mutualisé pour les 3
+ * apps mobiles omnirelic (courier/producer/packager, voir
+ * omnirelic/engine docs/identity.html pour la taxonomie des rôles). Chaque
+ * app ne fait que déclarer QUI elle est (`actor`) — le choix d'icône et son
+ * dimensionnement sont décidés UNE fois ici, jamais réimplémentés par app
+ * (Phosphor, comme courier l'utilisait déjà — plus cohérent qu'un emoji
+ * brut par app, cf. règle web "jamais d'emoji brut en UI").
  *
  * Badges :
- *   - bas-GAUCHE = nature de l'appareil (ex. maison si STATIQUE, rattaché à un lieu).
- *   - bas-DROITE = acteur (ex. moto livreur, marmite producer, colis packager).
+ *   - bas-GAUCHE = nature de l'appareil (maison si `staticLocation`, rattaché à un lieu fixe).
+ *   - bas-DROITE = acteur (moto livreur, marmite producer, colis packager).
  */
-import type { ReactNode } from "react";
 import { View } from "react-native";
+import { CookingPotIcon, HouseIcon, MotorcycleIcon, PackageIcon } from "phosphor-react-native";
 import { LogoMark, type LogoMarkProps } from "./LogoMark";
 import { theme } from "./theme";
 
-/** Badge statique, ou fonction du diamètre réel du badge (pour dimensionner soi-même un emoji/icône, comme l'ancien `Math.round(b * 0.58)` par app). */
-export type LogoBadge = ReactNode | ((badgeDiameter: number) => ReactNode);
+export type LogoActor = "courier" | "producer" | "packager";
+
+const ACTOR_ICON: Record<LogoActor, typeof MotorcycleIcon> = {
+  courier: MotorcycleIcon,
+  producer: CookingPotIcon,
+  packager: PackageIcon,
+};
 
 export interface LogoProps extends LogoMarkProps {
-  bottomLeftBadge?: LogoBadge;
-  bottomRightBadge?: LogoBadge;
+  actor?: LogoActor;
+  /** Appareil rattaché à un lieu fixe (ex. tablette cuisine) — badge maison en bas-gauche. */
+  staticLocation?: boolean;
 }
 
-export function Logo({ size = 44, animate = true, bottomLeftBadge, bottomRightBadge }: LogoProps) {
+export function Logo({ size = 44, animate = true, actor, staticLocation = false }: LogoProps) {
   const b = Math.round(size * 0.44); // diamètre badge
   const off = -Math.round(b * 0.12);
+  const iconSize = Math.round(b * 0.56);
+  const ActorIcon = actor ? ACTOR_ICON[actor] : null;
 
-  const badge = (value: LogoBadge, side: "left" | "right") => {
-    const content = typeof value === "function" ? value(b) : value;
-    return badgeView(content, side);
-  };
-
-  const badgeView = (content: ReactNode, side: "left" | "right") => (
+  const badge = (icon: React.ReactNode, side: "left" | "right") => (
     <View
       style={{
         position: "absolute", bottom: off, [side]: off,
@@ -41,15 +45,15 @@ export function Logo({ size = 44, animate = true, bottomLeftBadge, bottomRightBa
         alignItems: "center", justifyContent: "center",
       }}
     >
-      {content}
+      {icon}
     </View>
   );
 
   return (
     <View style={{ width: size, height: size }}>
       <LogoMark size={size} animate={animate} />
-      {bottomLeftBadge != null && badge(bottomLeftBadge, "left")}
-      {bottomRightBadge != null && badge(bottomRightBadge, "right")}
+      {staticLocation && badge(<HouseIcon weight="fill" size={iconSize} color={theme.dim} />, "left")}
+      {ActorIcon && badge(<ActorIcon weight="fill" size={iconSize} color={theme.accent} />, "right")}
     </View>
   );
 }
