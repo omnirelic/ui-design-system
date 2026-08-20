@@ -11,10 +11,15 @@
  *   - bas-GAUCHE = nature de l'appareil (maison si `staticLocation`, rattaché à un lieu fixe) —
  *     SAUF si c'est le SEUL badge (`staticLocation` sans `actor`, ex. l'app `site`) : centré en
  *     bas plutôt que calé à gauche, rien à droite pour l'équilibrer visuellement.
- *   - bas-DROITE = acteur (moto livreur, marmite producer, colis packager).
+ *   - bas-DROITE = acteur (moto livreur, usine producer, colis packager).
+ *
+ * `producer` = Factory, jamais une icône de cuisine (marmite...) : le rôle
+ * est agnostique du métier réel du provider (cuisine, imprimerie,
+ * atelier...) — voir identity.html, `producer` n'est pas "celui qui
+ * cuisine", c'est "celui qui fabrique", quel que soit le produit.
  */
 import { View } from "react-native";
-import { CookingPotIcon, HouseIcon, MotorcycleIcon, PackageIcon } from "phosphor-react-native";
+import { FactoryIcon, HouseIcon, MotorcycleIcon, PackageIcon } from "phosphor-react-native";
 import { LogoMark, type LogoMarkProps } from "./LogoMark";
 import { theme } from "./theme";
 
@@ -22,7 +27,7 @@ export type LogoActor = "courier" | "producer" | "packager";
 
 const ACTOR_ICON: Record<LogoActor, typeof MotorcycleIcon> = {
   courier: MotorcycleIcon,
-  producer: CookingPotIcon,
+  producer: FactoryIcon,
   packager: PackageIcon,
 };
 
