@@ -1,4 +1,6 @@
 export * from "./theme";
+export * from "./scale";
+export * from "./responsive";
 export { Pressable } from "./Pressable";
 export { Icon } from "./Icon";
 export type { IconName } from "./Icon";
