@@ -8,7 +8,9 @@
  * brut par app, cf. règle web "jamais d'emoji brut en UI").
  *
  * Badges :
- *   - bas-GAUCHE = nature de l'appareil (maison si `staticLocation`, rattaché à un lieu fixe).
+ *   - bas-GAUCHE = nature de l'appareil (maison si `staticLocation`, rattaché à un lieu fixe) —
+ *     SAUF si c'est le SEUL badge (`staticLocation` sans `actor`, ex. l'app `site`) : centré en
+ *     bas plutôt que calé à gauche, rien à droite pour l'équilibrer visuellement.
  *   - bas-DROITE = acteur (moto livreur, marmite producer, colis packager).
  */
 import { View } from "react-native";
@@ -35,11 +37,13 @@ export function Logo({ size = 44, animate = true, actor, staticLocation = false 
   const off = -Math.round(b * 0.12);
   const iconSize = Math.round(b * 0.56);
   const ActorIcon = actor ? ACTOR_ICON[actor] : null;
+  // Seul badge présent (site : maison sans acteur) -> centré en bas, pas calé à gauche.
+  const houseAlone = staticLocation && !ActorIcon;
 
-  const badge = (icon: React.ReactNode, side: "left" | "right") => (
+  const badge = (icon: React.ReactNode, position: { bottom: number; left: number }) => (
     <View
       style={{
-        position: "absolute", bottom: off, [side]: off,
+        position: "absolute", bottom: position.bottom, left: position.left,
         width: b, height: b, borderRadius: b / 2,
         backgroundColor: theme.panel, borderWidth: 1, borderColor: theme.line,
         alignItems: "center", justifyContent: "center",
@@ -52,8 +56,12 @@ export function Logo({ size = 44, animate = true, actor, staticLocation = false 
   return (
     <View style={{ width: size, height: size }}>
       <LogoMark size={size} animate={animate} />
-      {staticLocation && badge(<HouseIcon weight="fill" size={iconSize} color={theme.dim} />, "left")}
-      {ActorIcon && badge(<ActorIcon weight="fill" size={iconSize} color={theme.accent} />, "right")}
+      {staticLocation &&
+        badge(
+          <HouseIcon weight="fill" size={iconSize} color={theme.dim} />,
+          houseAlone ? { bottom: off, left: (size - b) / 2 } : { bottom: off, left: off },
+        )}
+      {ActorIcon && badge(<ActorIcon weight="fill" size={iconSize} color={theme.accent} />, { bottom: off, left: size - b - off })}
     </View>
   );
 }
