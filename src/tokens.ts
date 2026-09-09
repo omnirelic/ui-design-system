@@ -70,6 +70,27 @@ export const typography = {
   mono: "Space Grotesk, monospace",
 } as const;
 
+// Échelle typographique — valeurs BRUTES sans unité (px-équivalent à une
+// racine de 16), au même titre que `radius`/`spacing` ci-dessous : un futur
+// client React Native consomme ces nombres tels quels (dp), le web les
+// convertit en rem (voir web/theme.ts `rem()`/`FONT`). Convention resserrée
+// pour une UI dense (tableau de bord), pas l'échelle Tailwind par défaut
+// (base 16px) qui serait trop grande ici — même esprit que GitHub Primer,
+// pensé pour des interfaces à forte densité d'info plutôt qu'un site éditorial.
+export const fontSize = {
+  micro: 10, // sous-labels, codes secondaires
+  caption: 11, // eyebrow/meta en majuscules, texte tertiaire
+  label: 12, // titres de section, labels de champ, badges
+  body: 13, // texte secondaire, descriptions
+  base: 14, // texte UI principal — titres de ligne, boutons, champs, nav
+  lg: 16, // emphase — initiales avatar, nav active, montants de ligne
+  xl: 18, // sous-titre, titre de page mobile
+  xxl: 20, // titre de page desktop, valeurs de stat en avant
+  display1: 24, // gros chiffres secondaires
+  display2: 32, // hero — mobile
+  display3: 40, // hero — desktop
+} as const;
+
 export const radius = {
   sm: 6,
   md: 12,

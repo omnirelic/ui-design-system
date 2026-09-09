@@ -172,6 +172,16 @@ export function IconChevronDown(props: IconProps) {
   );
 }
 
+// Remplace le glyphe texte "✕" (bouton de fermeture des modales — mêmes
+// raisons que IconChevronDown ci-dessus).
+export function IconX(props: IconProps) {
+  return (
+    <Svg {...props} strokeWidth={2.25}>
+      <path d="M6 6l12 12M18 6L6 18" />
+    </Svg>
+  );
+}
+
 // ── Icônes InfoRow des vues preview /o /k /b /v /p (ParcelPage, ContainerPage,
 // VehiclePage, PromoPage) — mêmes raisons que ci-dessus : rendu identique sur
 // tout OS, pas de fallback tofu selon la police système.
