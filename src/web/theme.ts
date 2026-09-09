@@ -10,7 +10,17 @@
 // suivre un changement de thème choisi plus haut dans l'arbre, sans prop
 // drilling. Reste spécifique à web/ (tokens.ts, lui, ne doit JAMAIS
 // utiliser var() — un futur client React Native ne le comprendrait pas).
-import { colors, alpha, typography } from "../tokens";
+import { colors, alpha, typography, fontSize } from "../tokens";
+
+// Conversion rem — SEULE cette couche web convertit les nombres bruts de
+// `fontSize` (tokens.ts) en unité CSS ; rem respecte le zoom/la taille de
+// police du navigateur (accessibilité), contrairement à px. `FONT.*` est la
+// façon canonique de fixer une taille de texte dans web/ — jamais un nombre
+// en dur dans un composant (voir Text.tsx, qui les consomme).
+export const rem = (px: number) => `${px / 16}rem`;
+export const FONT = Object.fromEntries(
+  Object.entries(fontSize).map(([key, px]) => [key, rem(px)])
+) as Record<keyof typeof fontSize, string>;
 
 export const BG = `var(--o-bg, ${colors.bg})`;
 export const BG2 = `var(--o-bg2, ${colors.bg2})`;
