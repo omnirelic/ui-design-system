@@ -13,9 +13,11 @@ export type AvatarProps = {
   onPickFile?: (file: File) => void;
   /** Icône affichée en survol quand `onPickFile` est fourni (ex. `<Camera />` de @phosphor-icons/react) — le package reste agnostique du set d'icônes choisi par l'app. */
   editIcon?: ReactNode;
+  /** `cover` (défaut) pour une vraie photo carrée — `contain` pour un logo/bandeau non carré (wordmark), qu'un recadrage agressif couperait mal. */
+  fit?: "cover" | "contain";
 };
 
-export function Avatar({ initials, imageUrl, size = 58, onPickFile, editIcon }: AvatarProps) {
+export function Avatar({ initials, imageUrl, size = 58, onPickFile, editIcon, fit = "cover" }: AvatarProps) {
   const gid = useId().replace(/:/g, "");
   const cls = `omni-avatar-${gid}`;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -40,7 +42,7 @@ export function Avatar({ initials, imageUrl, size = 58, onPickFile, editIcon }: 
       role={onPickFile ? "button" : undefined}
       title={onPickFile ? "Changer le logo" : undefined}
     >
-      {imageUrl ? <img src={imageUrl} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : initials}
+      {imageUrl ? <img src={imageUrl} alt="" style={{ width: "100%", height: "100%", objectFit: fit, padding: fit === "contain" ? "10%" : 0, boxSizing: "border-box" }} /> : initials}
       {onPickFile && (
         <>
           <style>{`
