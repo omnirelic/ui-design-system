@@ -10,6 +10,14 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./pastille": {
+      "types": "./dist/web/entry-pastille.d.ts",
+      "default": "./dist/web/entry-pastille.js"
+    },
+    "./phone": {
+      "types": "./dist/web/entry-phone.d.ts",
+      "default": "./dist/web/entry-phone.js"
+    },
     "./tokens": {
       "types": "./dist/tokens.d.ts",
       "default": "./dist/tokens.js"
