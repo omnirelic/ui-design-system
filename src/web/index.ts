@@ -61,7 +61,4 @@ export { Pastille } from "./Pastille";
 export type { PastilleProps, PastilleSize } from "./Pastille";
 export { PASTILLE_TONES, STATUS_TONE, formatCount, statusTone, toneColor } from "./pastille-model";
 export type { PastilleTone } from "./pastille-model";
-export { PhoneInput } from "./PhoneInput";
-export type { PhoneInputProps, PhoneChange } from "./PhoneInput";
-export { DEFAULT_COUNTRY, displayPhone, flagOf, formatNational, isValidPhone, parseStoredPhone, phoneCountries, searchCountries, toE164 } from "./phone";
-export type { PhoneCountry, PhoneParts, CountryCode } from "./phone";
+// PhoneInput et utilitaires E.164 : sous-export `@omnirelic/ui-design-system/phone` (libphonenumber-js, dépendance du consommateur).
