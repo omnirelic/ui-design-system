@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.3.0-alpha.0",
+  "version": "0.3.0-alpha.1",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
@@ -39,21 +39,10 @@
   "peerDependencies": {
     "react": ">=18",
     "react-qr-code": ">=2",
-    "libphonenumber-js": ">=1.13",
-    "react-native": ">=0.73",
-    "react-native-svg": ">=14",
-    "expo-camera": ">=15",
-    "expo-linear-gradient": ">=13",
-    "phosphor-react-native": ">=3"
+    "libphonenumber-js": ">=1.13"
   },
   "peerDependenciesMeta": {
-    "react-qr-code": { "optional": true },
-    "libphonenumber-js": { "optional": true },
-    "react-native": { "optional": true },
-    "react-native-svg": { "optional": true },
-    "expo-camera": { "optional": true },
-    "expo-linear-gradient": { "optional": true },
-    "phosphor-react-native": { "optional": true }
+    "libphonenumber-js": { "optional": true }
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
