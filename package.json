@@ -25,11 +25,13 @@
   "scripts": {
     "prepare": "git config core.hooksPath .githooks",
     "build": "tsc -b",
-    "dev": "tsc -b --watch"
+    "dev": "tsc -b --watch",
+    "test": "vitest run"
   },
   "peerDependencies": {
     "react": ">=18",
     "react-qr-code": ">=2",
+    "libphonenumber-js": ">=1.13",
     "react-native": ">=0.73",
     "react-native-svg": ">=14",
     "expo-camera": ">=15",
@@ -38,6 +40,7 @@
   },
   "peerDependenciesMeta": {
     "react-qr-code": { "optional": true },
+    "libphonenumber-js": { "optional": true },
     "react-native": { "optional": true },
     "react-native-svg": { "optional": true },
     "expo-camera": { "optional": true },
@@ -53,6 +56,9 @@
     "expo-camera": "^16.0.18",
     "expo-linear-gradient": "^14.0.2",
     "phosphor-react-native": "^3.0.6",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.9",
+    "react-dom": "^18.3.1",
+    "@types/react-dom": "^18.3.1"
   }
 }
