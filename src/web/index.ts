@@ -57,3 +57,8 @@ export { Tooltip } from "./Tooltip";
 export type { TooltipProps } from "./Tooltip";
 export { Avatar } from "./Avatar";
 export type { AvatarProps } from "./Avatar";
+export { Pastille } from "./Pastille";
+export type { PastilleProps, PastilleSize } from "./Pastille";
+export { PASTILLE_TONES, STATUS_TONE, formatCount, statusTone, toneColor } from "./pastille-model";
+export type { PastilleTone } from "./pastille-model";
+// PhoneInput et utilitaires E.164 : sous-export `@omnirelic/ui-design-system/phone` (libphonenumber-js, dépendance du consommateur).

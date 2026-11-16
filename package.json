@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.2.1",
+  "version": "0.3.0-alpha.0",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
@@ -9,6 +9,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./pastille": {
+      "types": "./dist/web/entry-pastille.d.ts",
+      "default": "./dist/web/entry-pastille.js"
+    },
+    "./phone": {
+      "types": "./dist/web/entry-phone.d.ts",
+      "default": "./dist/web/entry-phone.js"
     },
     "./tokens": {
       "types": "./dist/tokens.d.ts",
@@ -25,11 +33,13 @@
   "scripts": {
     "prepare": "git config core.hooksPath .githooks",
     "build": "tsc -b",
-    "dev": "tsc -b --watch"
+    "dev": "tsc -b --watch",
+    "test": "vitest run"
   },
   "peerDependencies": {
     "react": ">=18",
     "react-qr-code": ">=2",
+    "libphonenumber-js": ">=1.13",
     "react-native": ">=0.73",
     "react-native-svg": ">=14",
     "expo-camera": ">=15",
@@ -38,6 +48,7 @@
   },
   "peerDependenciesMeta": {
     "react-qr-code": { "optional": true },
+    "libphonenumber-js": { "optional": true },
     "react-native": { "optional": true },
     "react-native-svg": { "optional": true },
     "expo-camera": { "optional": true },
@@ -48,11 +59,15 @@
     "@types/react": "^18.3.1",
     "react": "^18.3.1",
     "react-qr-code": "^2.2.0",
+    "libphonenumber-js": "^1.11.0",
     "react-native": "^0.76.9",
     "react-native-svg": "^15.8.0",
     "expo-camera": "^16.0.18",
     "expo-linear-gradient": "^14.0.2",
     "phosphor-react-native": "^3.0.6",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.9",
+    "react-dom": "^18.3.1",
+    "@types/react-dom": "^18.3.1"
   }
 }
