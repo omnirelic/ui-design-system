@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couleurs des statuts</title>
+<style>
+  :root { --bg:#141414; --card:#1c1c1c; --line:#2c2c2c; --txt:#ece9e2; --mut:#8d8d8d; }
+  @media (prefers-color-scheme: light) { :root { --bg:#f4f3f0; --card:#fff; --line:#dcdad4; --txt:#1c1b18; --mut:#6b6a64; } }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--txt); font:15px/1.5 -apple-system,BlinkMacSystemFont,"Inter",sans-serif }
+  main { max-width:720px; margin:0 auto; padding:24px 16px 80px }
+  h1 { font-size:20px; margin:0 0 4px }
+  p { color:var(--mut); margin:0 0 18px }
+  h2 { font-size:16px; margin:36px 0 4px }
+  .note { margin:12px 0 0; font-size:13px }
+  .spec { height:18px; border-radius:9px; margin:0 0 6px; background:linear-gradient(90deg,
+    hsl(0 80% 55%),hsl(30 90% 55%),hsl(45 90% 50%),hsl(75 70% 45%),hsl(120 45% 50%),hsl(165 75% 40%),hsl(185 85% 45%),hsl(215 85% 58%),hsl(250 75% 62%),hsl(280 70% 58%),hsl(320 70% 55%)) }
+  .marks { position:relative; height:44px; margin-bottom:22px }
+  .mark { position:absolute; top:0; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; font-size:10px; color:var(--mut); white-space:nowrap }
+  .mark i { width:2px; height:8px; background:var(--mut) }
+  .row { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:9px 12px; margin-bottom:8px }
+  .num { width:18px; color:var(--mut); font-size:12px; text-align:right }
+  .pill { display:inline-flex; align-items:center; gap:7px; padding:5px 12px; border-radius:999px; font-weight:600; min-width:170px; border:1px solid }
+  .pill b { width:9px; height:9px; border-radius:50%; background:currentColor }
+  .hex { font:12px ui-monospace,Menlo,monospace; color:var(--mut); width:68px }
+  input[type=color] { width:34px; height:28px; border:1px solid var(--line); border-radius:6px; background:none; padding:0; cursor:pointer }
+  .warn { color:#ff7a6b; font-size:12px; margin-left:auto }
+  button { background:transparent; color:var(--txt); border:1px solid var(--line); border-radius:8px; padding:8px 14px; font:inherit; cursor:pointer; margin-top:10px }
+  button:hover { background:rgba(127,127,127,.15) }
+</style>
+</head>
+<body>
+<main>
+  <h1>Couleurs des statuts de commande</h1>
+  <p>Dans l'ordre du parcours. Clique sur un carré pour essayer une autre couleur.</p>
+  <div class="spec"></div>
+  <div class="marks" id="marks"></div>
+  <div id="rows"></div>
+  <button id="copy">Copier mes choix</button>
+
+  <h2>Proposition</h2>
+  <p>Une seule palette pour l'admin et la file de commandes, rangée par famille de sens. Chaque statut garde une teinte propre ; « Prête » quitte le vert d'eau.</p>
+  <div id="prop"></div>
+  <button id="apply">Appliquer la proposition à la liste</button>
+  <button id="undo">Revenir aux couleurs actuelles</button>
+  <p class="note" id="propnote"></p>
+</main>
+<script>
+const S = [
+  ["Créée","#94A3B8"],["Attente paiement","#FF9800"],["Programmée","#8B5CF6"],["Confirmée","#3B82F6"],
+  ["En préparation","#14B8A6"],["Prête","#14B8A6"],["Livreur assigné","#A855F7"],["Récupérée","#6366F1"],
+  ["En route","#06B6D4"],["Arrivée","#84CC16"],["Livrée","#5FB55F"],["Annulée","#EF4444"]
+].map(([n,c])=>({n,c,o:c}));
+
+function hue(hex){
+  const r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
+  const mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn; if(!d) return 0;
+  let h = mx===r ? ((g-b)/d)%6 : mx===g ? (b-r)/d+2 : (r-g)/d+4; h*=60; return h<0?h+360:h;
+}
+const dist=(a,b)=>{const d=Math.abs(hue(a)-hue(b));return Math.min(d,360-d)};
+// position approximative sur la barre : ordre des teintes (0 rouge ... 320 rose) sur 0-100 %
+const pos=h=>Math.min(100,h/330*100);
+
+function render(){
+  const rows=document.getElementById("rows"); rows.innerHTML="";
+  S.forEach((s,i)=>{
+    const near=S.filter((t,j)=>j!==i && dist(s.c,t.c)<22).map(t=>t.n);
+    const row=document.createElement("div"); row.className="row";
+    row.innerHTML=`<span class="num">${i+1}</span>`;
+    const p=document.createElement("span"); p.className="pill"; p.style.color=s.c; p.style.borderColor=s.c+"80"; p.style.background=s.c+"22";
+    p.innerHTML=`<b></b><span style="color:var(--txt)"></span>`; p.lastChild.textContent=s.n; row.appendChild(p);
+    const hx=document.createElement("span"); hx.className="hex"; hx.textContent=s.c.toUpperCase(); row.appendChild(hx);
+    const inp=document.createElement("input"); inp.type="color"; inp.value=s.c.toLowerCase(); inp.oninput=()=>{s.c=inp.value;render()}; row.appendChild(inp);
+    if(near.length){const w=document.createElement("span"); w.className="warn"; w.textContent="proche de : "+near.join(", "); row.appendChild(w)}
+    rows.appendChild(row);
+  });
+  const m=document.getElementById("marks"); m.innerHTML="";
+  S.forEach(s=>{const e=document.createElement("div"); e.className="mark"; e.style.left=pos(hue(s.c))+"%"; e.innerHTML=`<i style="background:${s.c}"></i>`; m.appendChild(e)});
+}
+document.getElementById("copy").onclick=async()=>{
+  const t="Couleurs des statuts :\n"+S.map(s=>"- "+s.n+" : "+s.c.toUpperCase()+(s.c!==s.o?" (avant "+s.o+")":"")).join("\n");
+  try{await navigator.clipboard.writeText(t);document.getElementById("copy").textContent="Copié";setTimeout(()=>document.getElementById("copy").textContent="Copier mes choix",1500)}catch(e){prompt("Copie :",t)}
+};
+// Proposition : familles de sens, une teinte propre par statut
+const FAM = [
+  ["Attente", [["Créée","#94A3B8"],["Attente paiement","#FF9800"]]],
+  ["Planifiée", [["Programmée","#8B5CF6"],["Confirmée","#3B82F6"]]],
+  ["Cuisine", [["En préparation","#14B8A6"],["Prête","#84CC16"]]],
+  ["Livraison", [["Livreur assigné","#F472B6"],["Récupérée","#D946EF"],["En route","#0EA5E9"],["Arrivée","#22C55E"]]],
+  ["Fin", [["Livrée","#5FB55F"],["Annulée","#EF4444"]]]
+];
+const PROP = Object.fromEntries(FAM.flatMap(([,l])=>l));
+function renderProp(){
+  const box=document.getElementById("prop"); box.innerHTML="";
+  FAM.forEach(([f,list])=>{
+    const g=document.createElement("div"); g.className="row"; g.style.flexWrap="wrap";
+    const t=document.createElement("span"); t.className="num"; t.style.width="76px"; t.style.textAlign="left"; t.textContent=f; g.appendChild(t);
+    list.forEach(([n,c])=>{
+      const p=document.createElement("span"); p.className="pill"; p.style.minWidth="0"; p.style.color=c; p.style.borderColor=c+"80"; p.style.background=c+"22";
+      p.innerHTML="<b></b><span style='color:var(--txt)'></span>"; p.lastChild.textContent=n; g.appendChild(p);
+    });
+    box.appendChild(g);
+  });
+  const all=FAM.flatMap(([,l])=>l), close=[];
+  all.forEach(([n,c],i)=>all.forEach(([m,d],j)=>{ if(j>i && dist(c,d)<22) close.push(n+" / "+m); }));
+  document.getElementById("propnote").textContent = close.length ? "Teintes encore proches : "+close.join(" ; ")+"." : "Aucune paire de teintes proches.";
+}
+document.getElementById("apply").onclick=()=>{ S.forEach(s=>{ if(PROP[s.n]) s.c=PROP[s.n]; }); render(); };
+document.getElementById("undo").onclick=()=>{ S.forEach(s=>{ s.c=s.o; }); render(); };
+renderProp();
+render();
+</script>
+</body>
+</html>
