@@ -9,11 +9,11 @@ Note de décision (2026-11-20). Omnirelic rendra aussi cuisines.cm : la palette 
 - 229 dégradés écrits à la main dans 95 fichiers, sans jeton ni fonction partagée.
 - Aucune bibliothèque de couleur ; seul outil : calcul de contraste WCAG (`legible-color.ts`).
 
-## Décision déjà prise
+## Décision
 
-« En préparation » = vert d'eau `#14B8A6` (choisi par Bill).
+Palette validée par Bill le 2026-11-21. « En préparation » = vert d'eau `#14B8A6`, « Prête » = vert citron. Appliquée dans l'admin CLP (registre unique `entity-status.ts`, lu aussi par la file de commandes).
 
-## Proposition (non encore validée en entier)
+## Palette validée
 
 | Famille | Statut | Couleur |
 |---|---|---|
@@ -30,7 +30,7 @@ Note de décision (2026-11-20). Omnirelic rendra aussi cuisines.cm : la palette 
 | Fin | Livrée | `#5FB55F` |
 | Fin | Annulée | `#EF4444` |
 
-Teintes encore proches (< 22°) : Créée / Confirmée (le gris est très terne), Créée / En route, Confirmée / En route. Page interactive pour comparer et retoucher : `docs/couleurs-statuts.html`.
+Teintes proches (< 22°), acceptées : Créée / Confirmée (le gris est très terne), Créée / En route, Confirmée / En route. Page interactive : `docs/couleurs-statuts.html`.
 
 ## Principes à retenir (design systems de référence)
 
@@ -44,6 +44,6 @@ Teintes encore proches (< 22°) : Créée / Confirmée (le gris est très terne)
 
 - Jetons de statuts par famille + une fonction de contraste.
 - Une fonction « halo » (dégradé dérivé d'une couleur d'accent) pour remplacer les copies de CSS ; CSS récent (`color-mix`, dégradés OKLCH) à vérifier sur les navigateurs cibles avant d'ajouter une bibliothèque (culori seulement si génération automatique de nuances).
-- Faire lire ces jetons par l'admin CLP (registre unique), omnirelic/web et le rendu cuisines.cm.
+- Faire lire ces jetons par omnirelic/web et le rendu cuisines.cm (l'admin CLP les lit déjà).
 
 Sources : Polaris (Shopify), USWDS, Solstice (Université de Washington), Codex (Wikimedia), design system du PAM.
