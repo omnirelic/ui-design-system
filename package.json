@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.3.0-alpha.1",
+  "version": "0.3.0-alpha.2",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
@@ -22,6 +22,10 @@
       "types": "./dist/tokens.d.ts",
       "default": "./dist/tokens.js"
     },
+    "./catalog": {
+      "types": "./dist/catalog/index.d.ts",
+      "default": "./dist/catalog/index.js"
+    },
     "./native": {
       "types": "./dist/native/index.d.ts",
       "default": "./dist/native/index.js"
@@ -32,8 +36,10 @@
   "repository": { "type": "git", "url": "https://github.com/omnirelic/ui-design-system.git" },
   "scripts": {
     "prepare": "git config core.hooksPath .githooks",
+    "prebuild": "node scripts/generate-catalog-meta.mjs",
     "build": "tsc -b",
     "dev": "tsc -b --watch",
+    "pretest": "node scripts/generate-catalog-meta.mjs",
     "test": "vitest run"
   },
   "peerDependencies": {
