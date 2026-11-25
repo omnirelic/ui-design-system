@@ -1,8 +1,10 @@
 import { Checkbox } from "../web/Checkbox";
 import { Field, SelectInput, TextField, TextInput } from "../web/Field";
+import { PhoneField } from "../web/PhoneField";
 import { PhoneInput } from "../web/PhoneInput";
 import { SearchableSelect } from "../web/SearchableSelect";
 import { DEFAULT_COUNTRY, displayPhone, flagOf, formatNational, isValidPhone, parseStoredPhone, phoneCountries, searchCountries, toE164 } from "../web/phone";
+import { DEFAULT_PHONE_COUNTRY, PHONE_COUNTRIES, filterCountries, resolvePhone } from "../web/phone-intl";
 import { Controlled, choices, noop } from "./live";
 import type { CatalogEntrySourceInterface } from "./types";
 
@@ -80,6 +82,31 @@ export const CHAMPS_ENTRIES: CatalogEntrySourceInterface[] = [
         {(value, set) => <PhoneInput value={value} onChange={set} label="Téléphone" disabled={state === "disabled"} error={state === "invalid" ? "Numéro invalide" : undefined} />}
       </Controlled>
     ),
+  },
+  {
+    name: "PhoneField",
+    group: "champs",
+    kind: "component",
+    states: choices(["empty", "Vide"], ["filled", "Rempli"], ["invalid", "Invalide"]),
+    render: (_v, state, f) => (
+      <Controlled<{ country: (typeof PHONE_COUNTRIES)[number]; raw: string }> initial={{ country: PHONE_COUNTRIES.find((c) => c.iso === DEFAULT_PHONE_COUNTRY)!, raw: state === "empty" ? "" : state === "invalid" ? "6 99 12" : f.person.phone }}>
+        {(v, set) => <PhoneField country={v.country} value={v.raw} onCountry={(country) => set({ ...v, country })} onChange={(raw) => set({ ...v, raw })} invalid={state === "invalid"} />}
+      </Controlled>
+    ),
+  },
+  { name: "DEFAULT_PHONE_COUNTRY", group: "champs", kind: "constant", examples: () => [{ call: "DEFAULT_PHONE_COUNTRY", result: DEFAULT_PHONE_COUNTRY }] },
+  { name: "PHONE_COUNTRIES", group: "champs", kind: "constant", examples: () => [{ call: "PHONE_COUNTRIES.length", result: String(PHONE_COUNTRIES.length) }, { call: "PHONE_COUNTRIES[0]", result: JSON.stringify(PHONE_COUNTRIES[0]) }] },
+  {
+    name: "filterCountries",
+    group: "champs",
+    kind: "function",
+    examples: () => ["cote", "+33", "237"].map((q) => ({ call: `filterCountries(PHONE_COUNTRIES, '${q}')`, result: filterCountries(PHONE_COUNTRIES, q).map((c) => c.name).join(", ") })),
+  },
+  {
+    name: "resolvePhone",
+    group: "champs",
+    kind: "function",
+    examples: (f) => [f.person.phone, "+33 6 12 34 56 78", "90397489"].map((n) => ({ call: `resolvePhone(CM, '${n}')`, result: JSON.stringify(resolvePhone(PHONE_COUNTRIES.find((c) => c.iso === "CM")!, n).e164) })),
   },
   { name: "DEFAULT_COUNTRY", group: "champs", kind: "constant", examples: () => [{ call: "DEFAULT_COUNTRY", result: DEFAULT_COUNTRY }] },
   { name: "flagOf", group: "champs", kind: "function", examples: () => ["CM", "FR", "SN"].map((c) => ({ call: `flagOf('${c}')`, result: flagOf(c) })) },
