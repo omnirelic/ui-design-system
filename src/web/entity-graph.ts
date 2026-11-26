@@ -22,6 +22,8 @@ export interface EntityDef<V extends string = string> {
   idIs: string;
   /** Le libellé est un nom de personne : `EntityRef` l'affiche en casse de titre (« Bill Somen », jamais « BILL SOMEN ») et lui donne une photo. */
   person?: true;
+  /** Le disque de tête est la photo (initiales à défaut) : défaut = `person`. CLP : `support_thread` est une personne pour la casse du nom, mais sa pastille porte l'icône de la conversation (`photo: false`). */
+  photo?: boolean;
   /** Nom d'icône du disque de tête d'une chose (registre `Icon`). Donnée de présentation : absent, la pastille prend l'icône générique. */
   icon?: string;
   /** Icône du disque quand la chose est un produit intermédiaire (article de banque, plat de banque). */
