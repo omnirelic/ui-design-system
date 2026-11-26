@@ -19,3 +19,8 @@ export type { PastilleRole, SegmentTone, SegmentInput, PastilleSegment, Pastille
 export { EntityAvatar, initialsOf, initialsVariant } from "./entity-avatar";
 export { formatPersonName, formatPersonNameOrNull } from "./person-name";
 export { contrastRatio, legibleColor, tintedDiscBackground } from "./legible-color";
+
+// Adresse de livraison en pastille (lieu | distance | frais | durée), avec le devis branché par l'application.
+export { AddressRef, AddressQuoteProvider, OUT_OF_ZONE, formatKm, quoteTarget } from "./AddressRef";
+export type { AddressQuoteTarget, AddressRefProps, DefaultAddress, RoadQuote, UseRoadQuote } from "./AddressRef";
+export { neighborhoodFromAddressLabel, orderPlaceRowLabel, orderPlaceText } from "./place-text";
