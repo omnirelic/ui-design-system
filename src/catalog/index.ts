@@ -8,6 +8,7 @@ import { ENTITE_REF_ENTRIES } from "./entries-entite-ref";
 import { ENTITES_ENTRIES } from "./entries-entites";
 import { ETAT_ENTRIES } from "./entries-etat";
 import { MARQUE_ENTRIES } from "./entries-marque";
+import { NUMERO_MONTANTS_ENTRIES } from "./entries-numero-montants";
 import { PASTILLES_ENTRIES } from "./entries-pastilles";
 import { SURFACES_ENTRIES } from "./entries-surfaces";
 import { TABLEAUX_ENTRIES } from "./entries-tableaux";
@@ -28,6 +29,9 @@ const GROUPS = [
   { id: "tableaux", label: "Tableaux" },
   { id: "marque", label: "Marque" },
   { id: "entites", label: "Entités" },
+  { id: "numero", label: "Numéro" },
+  { id: "recherche", label: "Recherche" },
+  { id: "montants", label: "Montants" },
   { id: "retours", label: "Retours" },
   { id: "icones", label: "Icônes" },
   { id: "etat", label: "État" },
@@ -45,6 +49,7 @@ const entries: CatalogEntryInterface[] = [
   ...BRIQUES_ENTRIES,
   ...TABLEAUX_ENTRIES,
   ...ETAT_ENTRIES,
+  ...NUMERO_MONTANTS_ENTRIES,
 ].map((e) => ({ ...e, status: "exists", signature: SIGNATURES[e.name] ?? "" }));
 
 export const CATALOG: CatalogManifestInterface = {

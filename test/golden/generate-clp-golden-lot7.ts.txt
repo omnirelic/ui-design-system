@@ -1,0 +1,122 @@
+// Générateur des valeurs de référence du lot 7 : exécute le VRAI code de CLP (chezlapetite origin/dev) et écrit ses sorties en JSON.
+// Aucun numéro réel : tous les numéros sont fabriqués (préfixes d'opérateur + 0000 + 2 chiffres, numéros fictifs de plan de numérotation).
+import { writeFileSync, mkdirSync } from "node:fs";
+import { describe, it } from "vitest";
+import * as webMask from "../src/admin/lib/mask-phone";
+import { formatPhoneDisplay } from "../src/admin/lib/format-phone";
+import * as webSearch from "../src/admin/lib/phone-search";
+import { maskAmounts } from "../src/admin/lib/mask-amounts";
+import { ordersAmountsAccess } from "../src/admin/lib/orders-amounts";
+import { canRevealPhone, phoneActions, phoneRank } from "../src/admin/lib/phone-actions";
+import { COUNTRIES, parseIntlPhone, searchCountries, buildIntlPhone, isValidIntlPhone } from "../src/admin/order-desk/desk-countries";
+import { normalizeSearch, filterConversations, mergeSearchResults, needsServerSearch } from "../src/admin/whatsapp/conversation-search";
+import { searchItemConfigs, ITEM_CONFIGS } from "../src/admin/item/item-search";
+import { orderPlaceText, orderPlaceRowLabel } from "../src/admin/lib/order-place";
+import * as apiMask from "../api/_lib/phone-mask";
+import * as apiSearch from "../api/_lib/phone-search";
+import { maskPhoneDisplay as engineMask, detectMobileOperator as engineOperator } from "../../engine/src/sms/phone-display";
+import { detectMobileOperator } from "../src/order/order-types";
+import { conversationPhoneKey } from "../src/admin/whatsapp/conversation-lookup";
+import { QUALIFIERS } from "../src/admin/ui/pastille/pastille-model";
+import { formatKm, quoteTarget } from "../src/admin/ui/entity/AddressRef";
+
+const OUT = "/private/tmp/claude-502/-Users-billsomen-Documents-codes-chezlapetite/c760c7a6-d9ae-4fec-a500-fe0532aa634a/scratchpad/clp7/out";
+const run = <T>(f: () => T): { ok: T } | { throw: string } => { try { return { ok: f() }; } catch (e) { return { throw: String((e as Error).constructor.name) }; } };
+
+const ORANGE = ["655","656","657","658","659","690","691","692","693","694","695","696","697","698","699","686","687","688","689","640"];
+const MTN = ["670","671","672","673","674","675","676","677","678","679","650","651","652","653","654","680","681","682","683"];
+const OTHER_CM = ["620", "600", "233", "242", "660", "661", "685", "684", "699", "230", "699"];
+const tail = (i: number) => `0000${String(11 + (i * 7) % 89).padStart(2, "0")}`;
+
+const phones: (string | null | undefined)[] = [];
+[...ORANGE, ...MTN, ...OTHER_CM].forEach((p, i) => {
+  const n = `${p}${tail(i)}`;
+  phones.push(`+237${n}`, `237${n}`, n, `tel:+237${n}`, `+237 ${p} ${n.slice(3, 5)} ${n.slice(5, 7)} ${n.slice(7)}`, `+237.${n}`, `+237-${n}`, `(+237) ${n}`, `00237${n}`);
+});
+for (const c of COUNTRIES) phones.push(`+${c.dial}612000078`, `+${c.dial} 6 12 00 00 78`, `+${c.dial}12`, `+${c.dial}`);
+phones.push("+14155550123", "+12125550199", "+4915550000", "+442071838750", "+33600000078");
+phones.push("", "  ", null, undefined, "1", "12", "123", "1234", "abc", "+", "+0", "+999123456", "++237690000011", "tel:", "tel:12", "•", "••", "•••");
+phones.push("69000001", "6900000112", "2330000112", "569000011", "037690000011", "+237 6900000112", "+2376900000", "+237690", "+237 69", "237 690 000 011");
+phones.push("+237 ORANGE 11", "+237 MTN 19", "+33 INCONNU 78", "INCONNU 78", "ORANGE 11", "+237  ORANGE 11", "+237 ORANGE 1", "+237 ORANGE 111", " +237 ORANGE 11 ", "tel:+237 ORANGE 11", "+237 orange 11", "+1 INCONNU 23", "+1234 INCONNU 23");
+phones.push("+237•••••••11", "••••••••••78", "+237 ••• •• •• 11", "+237 6•• ••• •12", "+237 69•••••11", "+237698••••11", "+237677••••19", "+237 6•• •• 12 34", "••• •• •• 35", "+33 •••••••78", "+237 690••••11", "+237•", "+237 •• 11", "•1", "1•", "+237 69•••••", "6••••••••", "+237 ••••••••• ", "+237 ••• •• ••");
+phones.push("+٢٣٧٦٩٠٠٠٠٠١١", "٦٩٠٠٠٠٠١١", "+237 690 000 011", "+237 690 000 011", "+237 690 000 011", "\t+237690000011\n");
+phones.push("Éloïse", "Awa 690000", "a".repeat(40), "+237" + "6".repeat(30), "9".repeat(20));
+
+const terms: unknown[] = ["", " ", "1", "12", "123", "1234", "12345", "123456", "1234567", "690000", "69000", "+237 690 000 011", "00237690000011", "237690000", "237", "+237", "00", "0", "00237", "237690", "(237) 690.000-011", "690 00", "+33 6 00 00 00 78", "0033600000078", "Awa 690000", "abc", "69a000", "٦٩٠٠٠٠", "+", "...", "-", "690000011", "6900000112345678", "1".repeat(16), "1".repeat(15), "237237237", "00237237237", null, undefined, 123456, {}, [], "tel:690000", "  690000  ", "690\n000", "69 000 11"];
+const stored: (string | null | undefined)[] = ["+237690000011", "237690000011", "690000011", "6900000112", "(+237) 690 000 011", "+33600000078", "+14155550123", "+33 6 00 00 00 78", "", null, undefined, "abc", "+2376900", "00237690000011", "+999123456", "+237 690 000 011", "698", "+237 ORANGE 11", "+•", "x+237690000011", "+22507000011"];
+
+describe("génération", () => {
+  it("écrit les sorties de CLP", () => {
+    mkdirSync(OUT, { recursive: true });
+    const rows = (fns: Record<string, (x: any) => unknown>, inputs: unknown[]) => inputs.map((input) => ({ input: input === undefined ? { undef: true } : input, ...Object.fromEntries(Object.entries(fns).map(([k, f]) => [k, run(() => f(input))])) }));
+    const mask = rows({
+      webMaskPhone: webMask.maskPhone, webParts: webMask.maskedPhoneParts, webIsMasked: webMask.isMaskedPhoneText,
+      apiMask: apiMask.maskPhoneDisplay, engineMask: (x) => engineMask(x === null ? undefined : x), formatPhoneDisplay,
+    }, phones);
+    const fields = [{ id: 1, phone: "+237690000011", other: "x" }, { id: 2, phone: "", other: "y" }, { id: 3, phone: null, other: "z" }, { id: 4, phone: "+33600000078", client_phone: "698" }, { id: 5 }, { id: 6, phone: 5 }, { id: 7, phone: "  ", client_phone: "+14155550123" }];
+    const maskFields = fields.map((row) => run(() => apiMask.maskPhoneFields(row, ["phone", "client_phone"])));
+    const maskRows = run(() => apiMask.maskRowsPhones(fields, ["phone"]));
+    const operators = ["", "6", "69", "690", "6900", "655", "656", "660", "670", "683", "684", "640", "641", "233", "999", "690000011", "abc"].map((input) => ({ input, web: detectMobileOperator(input), engine: engineOperator(input) }));
+    const search = {
+      terms: rows({ webDigits: webSearch.phoneSearchDigits, webShort: webSearch.isShortPhoneTerm, apiDigits: apiSearch.phoneSearchDigits }, terms),
+      contains: [["+237690000011", "690000"], ["+237690000011", "0000011"], ["+237690000011", "690000011"], ["+237690000011", "237690"], ["+33600000078", "600000078"], ["+33600000078", "0078"], ["+14155550123", "5550123"], ["690000011", "690"], ["", "690"], [null, "690"], [undefined, "690"], ["+237 690 000 011", "000011"], ["237690000011", "6900"], ["69", "69"], ["abc", "1"], ["+2250700001122", "0700"], ["+2250700001122", "1122"]].map(([p, d]) => ({ phone: p, digits: d, result: apiSearch.phoneContainsDigits(p as string, d as string) })),
+      constants: { min: webSearch.PHONE_SEARCH_MIN_DIGITS, apiMin: apiSearch.PHONE_SEARCH_MIN_DIGITS, perMinute: apiSearch.PHONE_SEARCH_PER_MINUTE, max: apiSearch.PHONE_SEARCH_MAX_RESULTS, fullPerMinute: apiSearch.PHONE_SEARCH_FULL_PER_MINUTE },
+      check: terms.map((t, i) => ({ input: t === undefined ? { undef: true } : t, result: run(() => apiSearch.checkPhoneSearch(t, `golden-${i}`)) })),
+      rate: (() => {
+        const seq = (term: string, n: number, key: string) => Array.from({ length: n }, () => { const r = apiSearch.checkPhoneSearch(term, key); return r.ok ? "ok" : r.status; });
+        return { short: seq("690000", 12, "rate-a"), full: seq("690000011", 62, "rate-b"), otherKey: seq("690000", 2, "rate-c"), sharedBucket: seq("690000", 1, "rate-a") };
+      })(),
+    };
+    const countries = {
+      list: COUNTRIES,
+      parse: stored.map((input) => ({ input: input === undefined ? { undef: true } : input, result: run(() => parseIntlPhone(input as string)) })),
+      search: ["", "fr", "FR", "france", "Côte", "cote", "côte d'ivoire", "+33", "33", "+2", "2", "237", "+237", "1", "+1", "us", "zz", "congo", "rd", "guinée", "guinee", "  fr  ", "é", "e", "+", "a", "mali", "ma"].map((q) => ({ q, limit8: searchCountries(q), limit3: searchCountries(q, 3), limit0: searchCountries(q, 0) })),
+      build: COUNTRIES.slice(0, 6).flatMap((c) => ["690000011", "0690000011", "00690000011", "+690 000 011", "", "12"].map((n) => ({ iso: c.iso, n, result: buildIntlPhone(c, n), valid: isValidIntlPhone(c, n) }))),
+    };
+    const words = ["", " ", "Éloïse", "eloise", "ÉLOÏSE", "+237 ••• 19", "+237 ORANGE 19", "  a  b  ", "ça va ?", "N°0736", "#0736", "Œuvre", "ñandú", "straße", "i̇stanbul", "ǅ", "日本語", "A-B_C.D", "á", "é", "1,5 kg", "ﬁn", "①②", "Ⅻ", "è", "−12", "x".repeat(20)];
+    const items = [
+      { id: "1", channel: "whatsapp", name: "Éloïse M.", phoneMasked: "+237 ORANGE 19", clientId: null, status: "open", unreadCount: 0, needsReply: false, lastMessage: { preview: "Bonjour, je veux un poulet DG", direction: "in", kind: "text", at: "2026-11-01T10:00:00Z" }, lastMessageAt: "2026-11-01T10:00:00Z", currentOrder: { id: "o1", number: "0736" }, assignedAdminId: null },
+      { id: "2", channel: "whatsapp", name: "Awa", phoneMasked: "+33 INCONNU 78", clientId: null, status: "open", unreadCount: 0, needsReply: false, lastMessage: { preview: "Merci beaucoup !", direction: "out", kind: "text", at: "2026-11-02T10:00:00Z" }, lastMessageAt: "2026-11-02T10:00:00Z", currentOrder: null, assignedAdminId: null },
+      { id: "3", channel: "site", name: "Visiteur", phoneMasked: "", clientId: null, status: "open", unreadCount: 0, needsReply: false, lastMessage: null, lastMessageAt: "2026-11-03T10:00:00Z", currentOrder: { id: "o2", number: null }, assignedAdminId: null },
+      { id: "4", channel: "whatsapp", name: "Ñandú Straße", phoneMasked: "+237 MTN 11", clientId: null, status: "resolved", unreadCount: 0, needsReply: false, lastMessage: { preview: "ÉCOUTE le prix du ndolé", direction: "in", kind: "text", at: "2026-11-04T10:00:00Z" }, lastMessageAt: "2026-11-04T10:00:00Z", currentOrder: { id: "o3", number: "0102" }, assignedAdminId: null },
+    ];
+    const queries = ["", " ", "eloise", "ÉLOÏSE", "poulet dg", "dg poulet", "poulet cuisine", "orange", "orange 19", "+237", "237 19", "19", "0736", "#0736", "n 0736", "mtn", "ndole", "ndolé", "nandu strasse", "straße", "écoute", "Visiteur", "visit", "!!!", "--", "a", "e", "bonjour,", "merci!", "+33", "inconnu 78", "zzz", "le", "o"];
+    const kw = (c: { id: string }) => (c.id === "2" ? ["vip", "livraison express"] : c.id === "3" ? ["Chat Site"] : []);
+    const hay = (c: any) => [c.name, c.lastMessage?.preview?.trim() ?? (c.lastMessage ? "" : "Aucun message"), c.phoneMasked, c.currentOrder?.number ?? ""];
+    const conv = queries.map((q) => ({ q, ids: filterConversations(items as never, q).map((c) => c.id), idsKw: filterConversations(items as never, q, kw as never).map((c) => c.id) }));
+    const merge = [
+      { local: ["1", "2"], server: undefined }, { local: ["1", "2"], server: [] }, { local: ["1"], server: ["1", "2", "3", "4"] }, { local: [], server: ["4", "2", "3"] }, { local: ["4"], server: ["2", "3"] }, { local: ["1", "2", "3", "4"], server: ["1", "2", "3", "4"] },
+    ].map((m) => ({ ...m, result: mergeSearchResults(m.local.map((id) => items.find((i) => i.id === id)!) as never, m.server?.map((id) => items.find((i) => i.id === id)!) as never).map((c) => c.id) }));
+    const manyItems = Array.from({ length: 50 }, (_, i) => ({ ...items[0], id: `m${i}` }));
+    const needs = [[items, ""], [items, "  "], [items, "eloise"], [items, "690000"], [items, "69 00 01"], [items, "6900"], [items, "69.00.0"], [items, "12345"], [items, "1234"], [manyItems, "eloise"], [manyItems, ""], [manyItems.slice(0, 49), "eloise"], [items, "+237 690 000 011"], [items, "a1234b5"], [items, "12-34-5"]].map(([it, q]) => ({ n: (it as unknown[]).length, q, result: needsServerSearch(it as never, q as string) }));
+    const itemQueries = ["", " ", "prix", "tarif", "PRIX", "cout", "coût", "marge", "photo image", "photo visuel cover", "stock", "quantite inventaire", "seuil", "epuise", "épuisé", "bientôt épuisé", "bientôt", "calendrier", "horaire recurrent", "xaf", "slug url", "ÉTIQUETTES", "etiquettes halal", "zzzz", "a", "e", "tag", "nom titre", "titre nom", "  nom  ", "variation taille", "formule bundle", "cuisines liees", "sites magasins", "reset", "remise a zero", "poids grammes", "durée", "duree", "plafond"];
+    const text = {
+      normalize: words.map((w) => ({ input: w, result: normalizeSearch(w) })),
+      conversations: conv, merge, needs,
+      items: itemQueries.map((q) => ({ q, labels: searchItemConfigs(q).map((e) => e.label) })),
+      itemIndex: ITEM_CONFIGS, conversationItems: items,
+    };
+    const amountTexts = ["Paiement ORANGE initié · 4 000 XAF", "Reçu 1 850 FCFA du client", "Remboursé : 2 500 F", "Portefeuille −1 000 XAF, reste 1 500 XAF", "Paiement confirmé par l'admin", "Commande #0456", "Annulée (1 850 XAF)", "", "XAF", "4000XAF", "4 000XAF", "4.000 XAF", "4,5 F", "Total : 12 500 xaf", "Frais - 500 FCFA", "+ 500 F offerts", "Reçu 1 850 FCFA.", "Reçu (1 850 FCFA) ; merci", "Prix: 3 000 F / unité", "A 1F B", "Coût 1 000 Fr", "Le 12 F", "10 Frais", "1 000 000 XAF", "2 000 XAF ; 3 000 XAF", "Montant 5 000 XAF.", "Solde 1 500 XAF · merci", "  ·  ", "Paiement · ", "Paiement - 5 000 XAF -", "Code 4 F2", "Facture n° 12 345 F", "Remise de 10 % sur 2 000 XAF", "F 4 000", "4 000 XAF", "4 000 XAF", "−4 000 XAF", "-4 000 XAF remboursés", "( )", "a ( ) b", "x  ,  y", "Reçu 5 XAF ;", "5 XAF, 6 XAF"];
+    const roleSets = [[], ["admin"], ["superadmin"], ["ops", "admin"], ["ops"], ["finance"], ["support"], ["marketing"], ["dev"], ["stock_manager"], ["cook"], ["ops", "support"], ["superadmin", "admin"]];
+    const tabs = ["active", "scheduled", "archived", "today", "old", "dev", ""];
+    const amounts = {
+      mask: amountTexts.map((t) => ({ input: t, result: maskAmounts(t) })),
+      access: roleSets.flatMap((roles) => tabs.flatMap((tab) => [false, true].map((toggled) => ({ roles, tab, toggled, result: ordersAmountsAccess(roles, tab, toggled) })))),
+      rank: [null, undefined, {}, { role: "admin" }, { role: "superadmin" }, { roles: ["support", "superadmin"] }, { roles: ["support", "admin"] }, { roles: [] }, { role: "ops", roles: [] }, { role: "ops", roles: ["ops"] }, { role: "admin", roles: ["ops"] }, { role: "superadmin", roles: ["admin"] }, { role: null, roles: null }, { role: "Admin" }, { role: "" }, { roles: ["stock_manager", "dev"] }].map((a) => ({ admin: a === undefined ? { undef: true } : a, result: phoneRank(a as never) })),
+      reveal: (["superadmin", "admin", "other"] as const).flatMap((r) => (["view", "call", "copy"] as const).map((p) => ({ rank: r, purpose: p, result: canRevealPhone(r, p) }))),
+      actions: (["superadmin", "admin", "other"] as const).map((r) => ({ rank: r, actions: phoneActions(r) })),
+    };
+    const place = {
+      text: [["Ma localisation: Bangue – Hôpital de District", "Bangue – Hôpital de District"], ["Ma localisation: Bangue – Hopital", "bangue – hôpital"], ["Rue Njo-Njo", "Bonapriso"], ["Rue Njo-Njo, Bonapriso", "Bonapriso"], ["Bonapriso", "Bonapriso, Douala"], [null, "Akwa"], [undefined, null], ["Ma localisation: ", null], ["Ma localisation:", null], ["Ma localisation: Akwa", ""], ["  Ma localisation: Akwa", null], ["Akwa", "  "], ["Ma localisation: Akwa", "  Akwa  "], ["", "Akwa"], ["Akwa", "AKWA"], ["Ma localisation: Bonamoussadi", "Bonamoussadi – Carrefour"], ["Ma position actuelle (GPS)", null]].map(([a, q]) => ({ a, q, result: orderPlaceText(a as never, q as never) })),
+      row: ["Ma localisation: Akwa", "Rue Njo-Njo", null, undefined, "", "ma localisation: x", "Ma localisation:"].map((a) => ({ a: a === undefined ? { undef: true } : a, result: orderPlaceRowLabel(a as never) })),
+    };
+    const convKey = phones.map((input) => ({ input: input === undefined ? { undef: true } : input, result: run(() => conversationPhoneKey(input as string)) }));
+    const addr = {
+      km: [0, 0.04, 0.0999, 0.1, 0.149, 0.15, 1, 3.4, 3.45, 3.449, 16, 16.2, 99.95, 100, 1234.56, 0.05].map((km) => ({ km, result: formatKm(km) })),
+      target: [{ lat: 4.05, lng: 9.7 }, { neighborhoodId: "akwa" }, { lat: 4.05, lng: 9.7, neighborhoodId: "akwa" }, { instructions: "x" }, { lat: 4.05 }, { lng: 9.7, neighborhoodId: "n" }, {}, { lat: NaN, lng: 1 }, { lat: Infinity, lng: 1, neighborhoodId: "n" }, { lat: 0, lng: 0 }, { neighborhoodId: "" }].map((a) => ({ a: JSON.parse(JSON.stringify(a, (_k, v) => (typeof v === "number" && !Number.isFinite(v) ? String(v) : v))), result: run(() => quoteTarget(a as never)) })),
+      outOfZone: QUALIFIERS.outOfZone,
+    };
+    const files: Record<string, unknown> = { "clp-phone-mask.json": { phones: mask, maskFields, maskRows, operators }, "clp-phone-search.json": { search, countries }, "clp-text-search.json": text, "clp-amounts.json": amounts, "clp-place.json": { ...place, convKey, addr } };
+    for (const [name, data] of Object.entries(files)) writeFileSync(`${OUT}/${name}`, JSON.stringify(data));
+  });
+});
