@@ -10,7 +10,7 @@ describe("peerDependencies : un `npm install` simple passe dans une app web", ()
       expect(pkg.devDependencies, `${n} reste en devDependencies pour le build`).toHaveProperty(n);
     }
   });
-  it("le web exige react et react-qr-code (QrCard à la racine) ; libphonenumber-js (/phone) et react-router-dom (/query-params) sont optionnels", () => {
+  it("le web exige react et react-qr-code (QrCard à la racine) ; libphonenumber-js (/phone) et react-router-dom (/query-params, /entity, /image-gallery) sont optionnels", () => {
     expect(Object.keys(pkg.peerDependencies).sort()).toEqual(["libphonenumber-js", "react", "react-qr-code", "react-router-dom"]);
     expect(pkg.peerDependenciesMeta).toEqual({ "libphonenumber-js": { optional: true }, "react-router-dom": { optional: true } });
   });

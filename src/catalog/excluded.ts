@@ -6,6 +6,9 @@ const NETWORK = "Appelle le réseau ou un branchement injecté par l'application
 
 const SHELL = "Brique d'EntityRef (coque d'une forme) : montrée par les formes d'EntityRef ; exige un routeur et le fournisseur du graphe.";
 
+const DOM_ONLY = "Lit ou écrit le DOM du navigateur (canevas, entrée fichier, glisser-déposer) : pas de résultat pur à montrer ; couvert par les tests jsdom.";
+const MIC = "Demande le micro de l'appareil : pas d'exemple sans accès réel ; couvert par test/voice.test.tsx avec un MediaRecorder simulé.";
+
 /** Exports de valeur sans exemple possible. Un nouvel export doit avoir une entrée ou venir ici avec son motif. */
 export const CATALOG_EXCLUDED: CatalogExclusionInterface[] = [
   { export: "useQueryParam", reason: ROUTER },
@@ -56,4 +59,21 @@ export const CATALOG_EXCLUDED: CatalogExclusionInterface[] = [
   { export: "Swatch", reason: "Pastille de couleur d'un sac dans EntityRef : montrée par ses formes (swatch)." },
   { export: "Sep", reason: "Séparateur « | » d'EntityRef : sans état propre." },
   { export: "useSeededForm", reason: "Hook de formulaire alimenté par une ressource réseau : pas d'exemple sans ressource ; sémantique reprise de CLP." },
+  { export: "ImageViewer", reason: "Plein écran fixe : il recouvrirait la vue du catalogue ; montré par ImageThumb (ouverture) et couvert par test/image-viewer.test.tsx." },
+  { export: "ImageGallery", reason: "Exige un routeur (`?photo=`) : montré par PhotoLink et ProofField ; couvert par test/image-viewer.test.tsx." },
+  { export: "OpenImageContext", reason: "Contexte d'ouverture du visualiseur, sans rendu propre ; couvert par test/image-viewer.test.tsx." },
+  { export: "useOpenImage", reason: "Hook de contexte (null hors galerie) : sans rendu ni résultat pur ; couvert par test/image-viewer.test.tsx." },
+  { export: "acceptedFiles", reason: DOM_ONLY },
+  { export: "attachFileDrop", reason: DOM_ONLY },
+  { export: "feedInput", reason: DOM_ONLY },
+  { export: "compressImage", reason: DOM_ONLY },
+  { export: "photoToJpegBase64", reason: DOM_ONLY },
+  { export: "photoSize", reason: DOM_ONLY },
+  { export: "uploadToCloudinaryWithProgress", reason: NETWORK },
+  { export: "cloudinaryTransport", reason: NETWORK },
+  { export: "createCloudinaryUploader", reason: NETWORK },
+  { export: "useProofUpload", reason: "Hook d'état d'un envoi de photo (transport injecté) : sans résultat pur ; couvert par test/proof-field.test.tsx." },
+  { export: "startRecording", reason: MIC },
+  { export: "voiceSupported", reason: "Dépend du navigateur de l'appareil : pas de résultat stable ; couvert par test/voice.test.tsx." },
+  { export: "blobToBase64", reason: "Lit un fichier (FileReader), asynchrone : sans résultat pur à montrer ; couvert par test/voice.test.tsx." },
 ];
