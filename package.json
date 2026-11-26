@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.3.0-alpha.3",
+  "version": "0.3.0-alpha.6",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
@@ -13,6 +13,14 @@
     "./pastille": {
       "types": "./dist/web/entry-pastille.d.ts",
       "default": "./dist/web/entry-pastille.js"
+    },
+    "./state": {
+      "types": "./dist/web/entry-state.d.ts",
+      "default": "./dist/web/entry-state.js"
+    },
+    "./query-params": {
+      "types": "./dist/web/entry-query-params.d.ts",
+      "default": "./dist/web/entry-query-params.js"
     },
     "./phone": {
       "types": "./dist/web/entry-phone.d.ts",
@@ -45,10 +53,12 @@
   "peerDependencies": {
     "react": ">=18",
     "react-qr-code": ">=2",
-    "libphonenumber-js": ">=1.13"
+    "libphonenumber-js": ">=1.13",
+    "react-router-dom": ">=6"
   },
   "peerDependenciesMeta": {
-    "libphonenumber-js": { "optional": true }
+    "libphonenumber-js": { "optional": true },
+    "react-router-dom": { "optional": true }
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
@@ -63,6 +73,8 @@
     "typescript": "^5.6.3",
     "vitest": "^2.1.9",
     "react-dom": "^18.3.1",
+    "react-router-dom": "7.15.1",
+    "jsdom": "25.0.1",
     "@types/react-dom": "^18.3.1"
   }
 }
