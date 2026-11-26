@@ -7,6 +7,7 @@ import { CHAMPS_ENTRIES } from "./entries-champs";
 import { MARQUE_ENTRIES } from "./entries-marque";
 import { PASTILLES_ENTRIES } from "./entries-pastilles";
 import { SURFACES_ENTRIES } from "./entries-surfaces";
+import { TABLEAUX_ENTRIES } from "./entries-tableaux";
 import { TOKENS_ENTRIES } from "./entries-tokens";
 import { CATALOG_EXCLUDED } from "./excluded";
 import { PACKAGE_VERSION, SIGNATURES } from "./generated";
@@ -21,6 +22,7 @@ const GROUPS = [
   { id: "pastilles", label: "Pastilles" },
   { id: "champs", label: "Champs" },
   { id: "surfaces", label: "Surfaces" },
+  { id: "tableaux", label: "Tableaux" },
   { id: "marque", label: "Marque" },
   { id: "retours", label: "Retours" },
   { id: "icones", label: "Icônes" },
@@ -34,6 +36,7 @@ const entries: CatalogEntryInterface[] = [
   ...SURFACES_ENTRIES,
   ...MARQUE_ENTRIES,
   ...BRIQUES_ENTRIES,
+  ...TABLEAUX_ENTRIES,
 ].map((e) => ({ ...e, status: "exists", signature: SIGNATURES[e.name] ?? "" }));
 
 export const CATALOG: CatalogManifestInterface = {

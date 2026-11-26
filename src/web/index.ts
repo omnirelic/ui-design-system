@@ -81,3 +81,15 @@ export type { ConfirmDialogProps } from "./ConfirmDialog";
 export { CopyButton, CopyTextButton } from "./CopyButton";
 export type { CopyButtonProps } from "./CopyButton";
 export { useCopied, writeClipboard } from "./useCopied";
+
+// Lot 3 : tableau unique et menu déroulant de CLP (web/src/admin/ui/DataTable.tsx, Pager.tsx, EmptyState.tsx ; web/src/ui/Select.tsx).
+export { Select } from "./Select";
+export type { SelectOption, SelectProps } from "./Select";
+export { DataTable } from "./DataTable";
+export type { DataTableColumn, DataTableProps } from "./DataTable";
+export { Pager } from "./Pager";
+export type { PagerProps } from "./Pager";
+export { EmptyState } from "./EmptyState";
+export type { EmptyStateProps } from "./EmptyState";
+export { usePagination, PAGE_SIZES } from "./usePagination";
+export type { PaginationState } from "./usePagination";
