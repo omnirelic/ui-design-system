@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.3.0-alpha.10",
+  "version": "0.3.0-alpha.11",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
@@ -53,6 +53,14 @@
     "./voice": {
       "types": "./dist/web/entry-voice.d.ts",
       "default": "./dist/web/entry-voice.js"
+    },
+    "./admin-shell": {
+      "types": "./dist/web/entry-admin-shell.d.ts",
+      "default": "./dist/web/entry-admin-shell.js"
+    },
+    "./admin-shell-router": {
+      "types": "./dist/web/entry-admin-shell-router.d.ts",
+      "default": "./dist/web/entry-admin-shell-router.js"
     },
     "./phone": {
       "types": "./dist/web/entry-phone.d.ts",

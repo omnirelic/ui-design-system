@@ -3,7 +3,7 @@
 import { join } from 'node:path';
 import ts from 'typescript';
 
-export const ENTRY_FILES = ['src/index.ts', 'src/web/entry-phone.ts', 'src/web/entry-state.ts', 'src/web/entry-query-params.ts', 'src/web/entry-entity-graph.ts', 'src/web/entry-entity.ts', 'src/web/entry-masked-phone.ts', 'src/web/entry-search.ts', 'src/web/entry-amounts.ts', 'src/web/entry-images.ts', 'src/web/entry-image-gallery.ts', 'src/web/entry-voice.ts'];
+export const ENTRY_FILES = ['src/index.ts', 'src/web/entry-phone.ts', 'src/web/entry-state.ts', 'src/web/entry-query-params.ts', 'src/web/entry-entity-graph.ts', 'src/web/entry-entity.ts', 'src/web/entry-masked-phone.ts', 'src/web/entry-search.ts', 'src/web/entry-amounts.ts', 'src/web/entry-images.ts', 'src/web/entry-image-gallery.ts', 'src/web/entry-voice.ts', 'src/web/entry-admin-shell.ts', 'src/web/entry-admin-shell-router.ts'];
 
 export function listValueExports(root, files = ENTRY_FILES) {
   const cfg = ts.readConfigFile(join(root, 'tsconfig.json'), ts.sys.readFile);

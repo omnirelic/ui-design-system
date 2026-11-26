@@ -2,7 +2,7 @@
 // Interne au paquet (non exporté) : Drawer, ConfirmDialog et CopyButton s'en servent comme CLP se sert de ActionButton / `.clp-btn`.
 // Couleurs = jetons du thème (var(--o-*) avec repli sur le jeton brut) ; tailles, paddings et durées identiques à CLP.
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
-import { ACCENT, BG, BG2, BORDER, DIM, MONO, TXT, rem } from "./theme";
+import { ACCENT, BG, BG2, BORDER, CARD, DIM, MONO, TXT, rem } from "./theme";
 import { Spinner } from "./Spinner";
 import { toneColor } from "./pastille-model";
 
@@ -29,6 +29,10 @@ export const CONTROLS_CSS = `
 .omni-btn--danger:hover:not(:disabled){background:${tint(DANGER, 10)};border-color:${DANGER}}
 .omni-btn--bare{background:transparent;color:${DIM};border:1px solid transparent;padding:4px}
 .omni-btn--bare:hover:not(:disabled){color:${TXT}}
+.omni-btn--nav{background:transparent;color:${DIM};border:1px solid transparent;border-left:2px solid transparent;border-radius:0}
+.omni-btn--nav:hover:not(:disabled){background:${CARD};color:${TXT}}
+.omni-btn--nav[aria-current="page"]{background:${tint(ACCENT, 5)};color:${ACCENT};border-left-color:${ACCENT}}
+.omni-btn--nav[aria-current="page"]:hover:not(:disabled){background:${tint(ACCENT, 10)};color:${ACCENT}}
 .omni-btn--seg{background:transparent;color:${DIM};border:1px solid ${BORDER}}
 .omni-btn--seg:hover:not(:disabled){color:${TXT};border-color:${tint(ACCENT, 40)}}
 .omni-btn--seg[aria-pressed="true"],.omni-btn--seg[aria-checked="true"],.omni-btn--seg[aria-selected="true"]{background:${tint(ACCENT, 13)};color:${ACCENT};border-color:${ACCENT}}
@@ -43,7 +47,7 @@ if (typeof document !== "undefined" && !document.getElementById("omni-controls")
   document.head.appendChild(style);
 }
 
-export type ControlVariant = "ghost" | "primary" | "danger" | "bare" | "seg";
+export type ControlVariant = "ghost" | "primary" | "danger" | "bare" | "seg" | "nav";
 type Size = "sm" | "md" | "raw";
 
 // Tailles d'ActionButton de CLP : sm 5/9 px, 12 px ; md 7/12 px, 13,5 px ; minHeight 30 px. « raw » : le padding de la variante (bare : 4 px) et la taille du parent.

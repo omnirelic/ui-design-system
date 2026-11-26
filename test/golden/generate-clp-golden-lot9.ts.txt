@@ -1,0 +1,128 @@
+// Générateur des valeurs de référence du lot 9 : exécute le VRAI code de Chez la Petite (chezlapetite origin/dev) et écrit ses sorties en JSON.
+// (1) Le JEU DE DONNÉES de CLP (vues, hubs, ressources, anciennes URL, fonctions et réglages indexés) est exporté depuis les vrais fichiers, jamais retapé : c'est la fixture de test, non livrée.
+// (2) Les sorties des vraies fonctions (registry, hubs, hub-groups, navGroups, breadcrumbs, routes, role-views, palette score/norm) sur une matrice d'entrées.
+// Aucune donnée personnelle : seulement le registre de l'application, des rôles, des chemins et des libellés d'écran.
+import { writeFileSync, mkdirSync } from "node:fs";
+import { describe, it } from "vitest";
+import {
+  HUB_DEFS, HUB_OF_VIEW, NAV_GROUP_MAP, NAV_GROUP_ORDER, PATH_TO_VIEW, RESOURCE_DEFS, RESOURCE_VIEWS, ROLE_VIEWS, VIEW_DEFS, VIEW_LABEL, VIEW_TAB_LABEL, VIEW_TO_PATH,
+} from "../src/admin/shell/registry";
+import { LEGACY_PATHS, resolveLegacyPath } from "../src/admin/shell/routes";
+import { hubTabEntries, railOfView } from "../src/admin/shell/hub-groups";
+import { buildNavGroups } from "../src/admin/shell/navGroups";
+import { hubRank, sidebarEntries } from "../src/admin/shell/hubs";
+import { crumbsFor, viewFromPathname } from "../src/admin/shell/breadcrumbs";
+import { ENTITY_DEFS } from "../src/admin/shell/entity-graph";
+import { viewsFromHardcodedRoles, viewsFromPermissions } from "../src/admin/lib/role-views";
+import { ADMIN_FEATURES } from "../src/admin/admin-features";
+import { SETTINGS_SECTIONS } from "../src/admin/settings-schema";
+import { norm, score, type Entry } from "../src/admin/CommandPalette";
+import { canManageUsers } from "../src/admin/lib/permissions";
+
+const OUT = "<scratchpad>/clp9/out"; // dossier de sortie du poste qui régénère
+const run = <T>(f: () => T): { ok: T } | { throw: string } => { try { return { ok: f() }; } catch (e) { return { throw: String((e as Error).constructor.name) }; } };
+
+const views = VIEW_DEFS.map(d => d.id as string);
+const roles = Object.keys(ROLE_VIEWS);
+
+// Ensembles de vues visibles : tous, chaque rôle (accès par défaut), un rôle sans le premier onglet de chaque hub, aucun.
+const canSeeSets: Record<string, string[]> = { all: views, none: [] };
+for (const r of roles) canSeeSets[`role:${r}`] = ROLE_VIEWS[r] as string[];
+canSeeSets["sans-menu"] = views.filter(v => v !== "menu");
+canSeeSets["sans-premiers-onglets"] = views.filter(v => !HUB_DEFS.some(h => h.tabs[0] === v));
+
+describe("génération", () => {
+  it("écrit la fixture et les sorties de CLP", () => {
+    mkdirSync(OUT, { recursive: true });
+    const w = (name: string, data: unknown) => writeFileSync(`${OUT}/${name}.json`, JSON.stringify(data) + "\n");
+
+    // (1) Fixture : le jeu de données de CLP.
+    const features = ADMIN_FEATURES.map(f => ({ view: f.view, label: f.label, keywords: f.keywords }));
+    const settings = SETTINGS_SECTIONS.flatMap(s => s.fields.map(f => ({ fieldKey: f.key, label: f.label, hint: f.hint, group: s.label })));
+    w("clp-admin-registry", {
+      views: VIEW_DEFS, hubs: HUB_DEFS, resources: RESOURCE_DEFS, groupOrder: NAV_GROUP_ORDER, legacyPaths: LEGACY_PATHS,
+      legacyIdPrefixes: { partenaires: "partners", cuisines: "kitchens" },
+      idPages: [{ prefix: "partners", view: "edit", except: ["new", "edit"] }, { prefix: "kitchens", view: "cuisines" }],
+      entityLabels: Object.fromEntries(Object.entries(ENTITY_DEFS).map(([k, v]) => [k, { label: v.label }])),
+      features, settings,
+    });
+
+    // (2) Sorties.
+    const derived = {
+      VIEW_TO_PATH, PATH_TO_VIEW, VIEW_LABEL, VIEW_TAB_LABEL, NAV_GROUP_MAP, RESOURCE_VIEWS, ROLE_VIEWS,
+      HUB_OF_VIEW: Object.fromEntries(Object.entries(HUB_OF_VIEW).map(([k, h]) => [k, h!.id])),
+    };
+
+    const hubRanks = Object.fromEntries([...views, "inconnu", ""].map(k => [k, hubRank(k)]));
+
+    // Menu : chaque jeu de vues × (gère l'équipe oui/non) × (rôle principal pour les gates) × compteurs.
+    const nav: unknown[] = [];
+    for (const [setName, set] of Object.entries(canSeeSets)) {
+      for (const role of ["superadmin", "admin", "ops"]) {
+        const manage = canManageUsers(role);
+        for (const badges of [{ ordersBadge: 0, supportBadge: 0, emailsBadge: 0 }, { ordersBadge: 4, supportBadge: 2, emailsBadge: 7, validationsBadge: 3, conversationsBadge: 5 }]) {
+          const allowed = new Set(set);
+          const groups = buildNavGroups({ admin: { role } as never, canSee: v => allowed.has(v), canManageUsers: manage, ...badges });
+          nav.push({ set: setName, role, manage, badges, groups: groups.map(g => ({ label: g.label, items: g.items.map(i => ({ key: i.key, label: i.label, hidden: i.hidden, badge: i.badge, kw: i.keywords?.length ?? null })) })), entries: groups.map(g => sidebarEntries(g.items)) });
+        }
+      }
+    }
+
+    // Onglets et rail : chaque hub × chaque vue (+ vue hors hub) × chaque jeu de vues.
+    const tabs: unknown[] = [];
+    for (const hub of HUB_DEFS) {
+      for (const view of [...hub.tabs, ...(hub.extras ?? []), "inconnu"]) {
+        for (const [setName, set] of Object.entries(canSeeSets)) {
+          const allowed = new Set(set);
+          const canSee = (v: string) => allowed.has(v);
+          tabs.push({ hub: hub.id, view, set: setName, tabs: hubTabEntries(hub, view as never, canSee as never), rail: railOfView(hub, view as never, canSee as never) });
+        }
+      }
+    }
+
+    const crumbs = {
+      plain: Object.fromEntries(views.map(v => [v, crumbsFor(v as never)])),
+      entity: Object.fromEntries(views.flatMap(v => ["order", "partner", "kitchen"].map(k => [`${v}|${k}`, crumbsFor(v as never, { kind: k as never, label: "#0726" })]))),
+    };
+
+    const pathnames = [
+      ...VIEW_DEFS.flatMap(d => [`/admin/${d.path}`, `/admin/${d.path}/`, `/admin/${d.path}//`]),
+      "/admin", "/admin/", "", "/", "/admin/inconnu", "/admin/orders/inconnu", "/admin/partners/p1", "/admin/partners/p1/", "/admin/partners/new", "/admin/partners/edit",
+      "/admin/partners", "/admin/partners/", "/admin/kitchens/s9", "/admin/kitchens/s9/", "/admin/kitchens", "/admin/kitchens/", "/admin/partenaires/p1", "/admin/Orders", "/orders",
+    ];
+    const pathResults = pathnames.map(p => ({ p, viewFromPathname: viewFromPathname(p) }));
+
+    const legacyInputs = [
+      ...Object.keys(LEGACY_PATHS), ...Object.keys(LEGACY_PATHS).map(k => `${k}/`), ...Object.keys(LEGACY_PATHS).map(k => `${k}///`),
+      ...VIEW_DEFS.map(d => d.path), "partenaires/abc123", "partenaires/abc123/", "partenaires/a/b", "cuisines/site-9", "cuisines/site-9/x", "partners/abc123", "kitchens/site-9",
+      "", "inconnu", "commandes/", "catalogue/accompagnements", "catalog/accompaniments", "clients/wallet-tiers", "Commandes", "constructor", "toString",
+    ];
+    const legacy = legacyInputs.map(i => ({ i, out: run(() => resolveLegacyPath(i)) }));
+
+    // Permissions : une matrice par rôle (ressource lisible une sur deux, ou toutes), repli codé en dur.
+    const resources = RESOURCE_DEFS.map(r => r.key);
+    const matrix = (rs: string[]) => Object.fromEntries(rs.map((r, i) => [r, Object.fromEntries(resources.map((k, j) => [k, { read: (i + j) % 2 === 0 }]))]));
+    const allRoles = [...roles, "inconnu"];
+    const perms = {
+      matrix: matrix(allRoles),
+      fromMatrix: [[], ["superadmin"], ["ops"], ["ops", "support"], ["inconnu"], ["cook", "stock_manager", "packer"], allRoles].map(rs => ({ roles: rs, views: viewsFromPermissions(matrix(allRoles) as never, rs, RESOURCE_VIEWS as never) })),
+      hardcoded: [[], ["superadmin"], ["ops"], ["ops", "support"], ["inconnu"], ["cook", "stock_manager", "packer"], allRoles].map(rs => ({ roles: rs, views: viewsFromHardcodedRoles(rs) })),
+    };
+
+    // Palette : norm, score de chaque entrée du jeu de CLP × une grille de requêtes (déjà normalisées comme le fait le composant).
+    const normInputs = ["Paramètres", "Créneaux Été", "ÉCOLE", "œuf", "ß", "naïve café", "  Espaces  ", "", "COMMANDES", "Œuvre", "ǅ"];
+    const entries: Entry[] = [
+      ...VIEW_DEFS.map(d => ({ kind: "view" as const, key: d.id as never, label: (d as { navLabel?: string }).navLabel ?? d.label, group: d.group, keywords: (d as { keywords?: readonly string[] }).keywords ? [...(d as { keywords?: readonly string[] }).keywords!] : undefined })),
+      ...features.map(f => ({ kind: "feature" as const, key: f.view as never, label: f.label, group: NAV_GROUP_MAP[f.view as never], keywords: f.keywords })),
+      ...settings.map(s => ({ kind: "setting" as const, ...s })),
+    ];
+    const queries = ["", "comm", "cmd", "livrs", "mande", "influenceur", "sms", "orange", "bundle", "expiration", "gluten", "allergene", "frais", "livraison", "paramètres", "parametres", "PARAM", "x", "é", "stock", "menu", "ba", "tarif", "moto", "wallet", "recharge", "1", "oeuf", "œuf", "catalogue", "équipe", "equipe", "role", "rôles", "zzzz"];
+    const scores = queries.map(q => ({ q, scores: entries.map(e => score(e, norm(q.trim()))) }));
+    const ranked = queries.map(q => {
+      const nq = norm(q.trim());
+      return { q, order: entries.map((e, i) => ({ e: i, s: score(e, nq) })).filter(r => r.s > 0).sort((a, b) => b.s - a.s).map(r => r.e) };
+    });
+
+    w("clp-admin-shell", { derived, hubRanks, nav, tabs, crumbs, pathResults, legacy, perms, palette: { normInputs: normInputs.map(i => ({ i, o: norm(i) })), queries, entryCount: entries.length, scores, ranked } });
+  });
+});
