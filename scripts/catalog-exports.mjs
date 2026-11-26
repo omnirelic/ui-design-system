@@ -3,7 +3,7 @@
 import { join } from 'node:path';
 import ts from 'typescript';
 
-export const ENTRY_FILES = ['src/index.ts', 'src/web/entry-phone.ts', 'src/web/entry-state.ts', 'src/web/entry-query-params.ts', 'src/web/entry-entity-graph.ts'];
+export const ENTRY_FILES = ['src/index.ts', 'src/web/entry-phone.ts', 'src/web/entry-state.ts', 'src/web/entry-query-params.ts', 'src/web/entry-entity-graph.ts', 'src/web/entry-entity.ts'];
 
 export function listValueExports(root, files = ENTRY_FILES) {
   const cfg = ts.readConfigFile(join(root, 'tsconfig.json'), ts.sys.readFile);

@@ -4,6 +4,8 @@ const ROUTER = "Exige un routeur (react-router-dom) : montré via createQueryPar
 const STORE = "État global du cache (IndexedDB, mémoire, cloisonnement par admin) : aucun rendu ni résultat pur à montrer ; couvert par test/swr-cache.test.ts.";
 const NETWORK = "Appelle le réseau ou un branchement injecté par l'application : pas d'exemple sans réseau ; couvert par les tests miroir de Chez la Petite.";
 
+const SHELL = "Brique d'EntityRef (coque d'une forme) : montrée par les formes d'EntityRef ; exige un routeur et le fournisseur du graphe.";
+
 /** Exports de valeur sans exemple possible. Un nouvel export doit avoir une entrée ou venir ici avec son motif. */
 export const CATALOG_EXCLUDED: CatalogExclusionInterface[] = [
   { export: "useQueryParam", reason: ROUTER },
@@ -26,5 +28,19 @@ export const CATALOG_EXCLUDED: CatalogExclusionInterface[] = [
   { export: "useAdminChanges", reason: NETWORK },
   { export: "useAdminResource", reason: NETWORK },
   { export: "useAdminData", reason: NETWORK },
+  { export: "EntityRefProvider", reason: "Fournisseur du graphe de l'application : sans rendu propre, utilisé par toutes les entrées EntityRef." },
+  { export: "useEntityRef", reason: "Hook de contexte (erreur hors fournisseur) : sans rendu ni résultat pur ; couvert par test/entity-ref.test.tsx." },
+  { export: "entityRefFor", reason: "Fabrique un EntityRef figé sur un type : même rendu qu'EntityRef ; couvert par test/entity-ref.test.tsx." },
+  { export: "HoverCard", reason: "Carte rendue dans un portail du <body> au survol : pas de rendu dans une carte de catalogue ; couvert par test/hover-card.test.tsx." },
+  { export: "RefChipShell", reason: SHELL },
+  { export: "RefNumShell", reason: SHELL },
+  { export: "RefRowShell", reason: SHELL },
+  { export: "RefCardShell", reason: SHELL },
+  { export: "RefDetailShell", reason: SHELL },
+  { export: "RefMenu", reason: SHELL },
+  { export: "RefLink", reason: SHELL },
+  { export: "Dot", reason: "Point d'état d'EntityRef : montré par ses formes." },
+  { export: "Swatch", reason: "Pastille de couleur d'un sac dans EntityRef : montrée par ses formes (swatch)." },
+  { export: "Sep", reason: "Séparateur « | » d'EntityRef : sans état propre." },
   { export: "useSeededForm", reason: "Hook de formulaire alimenté par une ressource réseau : pas d'exemple sans ressource ; sémantique reprise de CLP." },
 ];
