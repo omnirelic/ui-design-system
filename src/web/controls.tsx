@@ -10,7 +10,7 @@ import { toneColor } from "./pastille-model";
 export const VEIL = "rgba(0,0,0,0.6)";
 export const SHADOW_DRAWER = "-24px 0 60px rgba(0,0,0,0.55)";
 /** Étages de CLP (tokens.ts `Z`). */
-export const Z = { sticky: 10, drawer: 1200, modal: 1300 } as const;
+export const Z = { sticky: 10, drawer: 1200, modal: 1300, popup: 10000 } as const;
 
 /** Teinte translucide d'une couleur du thème : remplace le suffixe hexadécimal de CLP (`G + "22"`), impossible sur `var(...)`. */
 export const tint = (color: string, pct: number): string => `color-mix(in srgb, ${color} ${pct}%, transparent)`;
@@ -29,6 +29,9 @@ export const CONTROLS_CSS = `
 .omni-btn--danger:hover:not(:disabled){background:${tint(DANGER, 10)};border-color:${DANGER}}
 .omni-btn--bare{background:transparent;color:${DIM};border:1px solid transparent;padding:4px}
 .omni-btn--bare:hover:not(:disabled){color:${TXT}}
+.omni-btn--seg{background:transparent;color:${DIM};border:1px solid ${BORDER}}
+.omni-btn--seg:hover:not(:disabled){color:${TXT};border-color:${tint(ACCENT, 40)}}
+.omni-btn--seg[aria-pressed="true"],.omni-btn--seg[aria-checked="true"],.omni-btn--seg[aria-selected="true"]{background:${tint(ACCENT, 13)};color:${ACCENT};border-color:${ACCENT}}
 .omni-drawer-actions:empty{display:none!important}
 `;
 
@@ -40,7 +43,7 @@ if (typeof document !== "undefined" && !document.getElementById("omni-controls")
   document.head.appendChild(style);
 }
 
-export type ControlVariant = "ghost" | "primary" | "danger" | "bare";
+export type ControlVariant = "ghost" | "primary" | "danger" | "bare" | "seg";
 type Size = "sm" | "md" | "raw";
 
 // Tailles d'ActionButton de CLP : sm 5/9 px, 12 px ; md 7/12 px, 13,5 px ; minHeight 30 px. « raw » : le padding de la variante (bare : 4 px) et la taille du parent.
