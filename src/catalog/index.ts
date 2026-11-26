@@ -1,9 +1,10 @@
 // Manifeste de catalogue de @omnirelic/ui-design-system (sous-chemin `@omnirelic/ui-design-system/catalog`).
-// Une entrée par export public (racine, /phone, /state, /query-params et /entity-graph), ou une exclusion motivée : test/catalog-rules.test.ts l'impose.
+// Une entrée par export public (racine, /phone, /state, /query-params, /entity-graph et /entity), ou une exclusion motivée : test/catalog-rules.test.ts l'impose.
 // Le sous-chemin /native (React Native) n'a pas de rendu DOM : hors catalogue.
 import { BRIQUES_ENTRIES } from "./entries-briques";
 import { BOUTONS_ENTRIES } from "./entries-boutons";
 import { CHAMPS_ENTRIES } from "./entries-champs";
+import { ENTITE_REF_ENTRIES } from "./entries-entite-ref";
 import { ENTITES_ENTRIES } from "./entries-entites";
 import { ETAT_ENTRIES } from "./entries-etat";
 import { MARQUE_ENTRIES } from "./entries-marque";
@@ -40,6 +41,7 @@ const entries: CatalogEntryInterface[] = [
   ...SURFACES_ENTRIES,
   ...MARQUE_ENTRIES,
   ...ENTITES_ENTRIES,
+  ...ENTITE_REF_ENTRIES,
   ...BRIQUES_ENTRIES,
   ...TABLEAUX_ENTRIES,
   ...ETAT_ENTRIES,
