@@ -9,6 +9,9 @@ const SHELL = "Brique d'EntityRef (coque d'une forme) : montrée par les formes 
 const DOM_ONLY = "Lit ou écrit le DOM du navigateur (canevas, entrée fichier, glisser-déposer) : pas de résultat pur à montrer ; couvert par les tests jsdom.";
 const MIC = "Demande le micro de l'appareil : pas d'exemple sans accès réel ; couvert par test/voice.test.tsx avec un MediaRecorder simulé.";
 
+const SHELL_CTX = "Hook de contexte (valeurs neutres hors fournisseur) : sans rendu ni résultat pur ; couvert par test/admin-shell.test.tsx.";
+const SHELL_ROUTER = "Exige un routeur (react-router-dom) : couvert par test/admin-shell-router.test.tsx avec un MemoryRouter.";
+
 /** Exports de valeur sans exemple possible. Un nouvel export doit avoir une entrée ou venir ici avec son motif. */
 export const CATALOG_EXCLUDED: CatalogExclusionInterface[] = [
   { export: "useQueryParam", reason: ROUTER },
@@ -76,4 +79,16 @@ export const CATALOG_EXCLUDED: CatalogExclusionInterface[] = [
   { export: "startRecording", reason: MIC },
   { export: "voiceSupported", reason: "Dépend du navigateur de l'appareil : pas de résultat stable ; couvert par test/voice.test.tsx." },
   { export: "blobToBase64", reason: "Lit un fichier (FileReader), asynchrone : sans résultat pur à montrer ; couvert par test/voice.test.tsx." },
+  { export: "AdminLayout", reason: "Mise en page plein écran (100 % de la hauteur de la fenêtre, <body> modifié) : pas de carte de catalogue ; couvert par test/admin-shell.test.tsx." },
+  { export: "useHubSwitcher", reason: SHELL_CTX },
+  { export: "useInHub", reason: SHELL_CTX },
+  { export: "useAdminLink", reason: SHELL_CTX },
+  { export: "useAdminPrefs", reason: SHELL_CTX },
+  { export: "useViewImmersion", reason: "Replie le menu de gauche le temps de la visite : effet sur l'état de l'admin, sans rendu propre ; couvert par test/admin-shell.test.tsx." },
+  { export: "useAdminNightTheme", reason: "Pose une classe sur <html> : effet de bord sans rendu propre ; couvert par test/admin-shell.test.tsx." },
+  { export: "AdminRouterLinks", reason: SHELL_ROUTER },
+  { export: "ViewBreadcrumbs", reason: SHELL_ROUTER },
+  { export: "useAdminLocation", reason: SHELL_ROUTER },
+  { export: "useLegacyRedirect", reason: SHELL_ROUTER },
+  { export: "useRailSection", reason: ROUTER },
 ];
