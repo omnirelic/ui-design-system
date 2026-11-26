@@ -1,6 +1,6 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.3.0-alpha.3",
+  "version": "0.3.0-alpha.4",
   "type": "module",
   "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
@@ -42,6 +42,9 @@
     "pretest": "node scripts/generate-catalog-meta.mjs",
     "test": "vitest run"
   },
+  "dependencies": {
+    "@phosphor-icons/react": "2.1.10"
+  },
   "peerDependencies": {
     "react": ">=18",
     "react-qr-code": ">=2",
@@ -63,6 +66,7 @@
     "typescript": "^5.6.3",
     "vitest": "^2.1.9",
     "react-dom": "^18.3.1",
-    "@types/react-dom": "^18.3.1"
+    "@types/react-dom": "^18.3.1",
+    "jsdom": "25.0.1"
   }
 }

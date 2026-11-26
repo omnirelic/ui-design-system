@@ -32,6 +32,17 @@ pnpm run build
 - `PhoneField` (aussi `/phone`) : le champ numéro de Chez la Petite repris tel quel — pays + saisie brute tenus par le parent (`country`, `value`, `onCountry`, `onChange`, `onBlur`, `invalid`, `autoFocus`, `errorId`), 25 pays, drapeaux SVG intégrés, liste ouverte vers le haut. `resolvePhone(pays, saisie)` donne l'E.164 (`null` si invalide ; Cameroun strict 6XXXXXXXX, un `+` ou `00` collé change le pays). Sans `libphonenumber-js`. Couleurs du thème (`--o-accent`, `--o-card`…).
 - Tests : `pnpm test`.
 
+## Briques de base de Chez la Petite (lot 2)
+
+Reprises de `web/src/ui` et `web/src/admin/ui` de CLP (gelé) : mêmes props, états, tailles et comportements ; seules les couleurs passent par les jetons du thème (`--o-*`).
+
+- `Drawer` : panneau latéral droit (`open`, `onClose`, `title`, `crumbs`, `width` 560, `actions`, `footer`, `headerExtra`, `veil`, `outsideClose`, `bare`, `bodyRef`, `skin`), sortie animée 280 ms, fermeture par ×, Échap ou fond. Comme CLP : ni piège de focus ni rôle `dialog`.
+- `Alert` (`success`, `warning`, `error`, `info`), `Spinner` (24 px, 0,7 s), squelettes `Sk`, `SkRows`, `SkTable`, `SkGrid`, `SkBar`, `Pagination` (`page`, `totalPages`, `onChange`).
+- `ConfirmDialog` (modale 420 px, `danger`, `loading`, `zIndex`, `initialFocus`) ; `Modal` accepte désormais `maxWidth` (380) et `zIndex` (60).
+- `CopyButton` / `CopyTextButton` (icône → coche + « Copié » 1,8 s), `useCopied`, `writeClipboard` (repli `execCommand`).
+- `Icon` + `ICONS` : registre sémantique `res-`, `action-`, `status-`, `step-`, `ui-`, `state-`, `service-`, `loc-`, `kind-`, `nav-`, `pay-`, glyphes Phosphor (dépendance `@phosphor-icons/react` 2.1.10, un import par icône). Les couleurs en dur de CLP deviennent des tons du thème ; familles propres à l'admin ou au métier CLP non reprises.
+- Styles posés une fois dans `<head>` au chargement (`omni-controls`, `omni-spin`, `omni-sk`).
+
 ## Catalogue
 
 `@omnirelic/ui-design-system/catalog` exporte `CATALOG` : tokens introspectés et composants web avec leurs états, une entrée par export public (racine et `/phone`) ou une exclusion motivée. `test/catalog-rules.test.ts` échoue si un export n'a ni l'un ni l'autre ; signatures et version sont générées au build (`scripts/generate-catalog-meta.mjs`).
