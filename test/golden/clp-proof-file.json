@@ -1,0 +1,815 @@
+{
+ "max": 10485760,
+ "cases": [
+  {
+   "input": [
+    "image/jpeg",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    1
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    1000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    1000000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    10485759
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    10485760
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    10485761
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    50000000
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/jpeg",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    1
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    1000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    1000000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    10485759
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    10485760
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    10485761
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    50000000
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/png",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    1
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    1000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    1000000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    10485759
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    10485760
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    10485761
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    50000000
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/heic",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "image/",
+    1
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/",
+    1000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/",
+    1000000
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/",
+    10485759
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/",
+    10485760
+   ],
+   "out": {
+    "ok": null
+   }
+  },
+  {
+   "input": [
+    "image/",
+    10485761
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/",
+    50000000
+   ],
+   "out": {
+    "ok": "Image trop lourde (10 Mo max)."
+   }
+  },
+  {
+   "input": [
+    "image/",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    1000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    1000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    10485759
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    10485760
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    10485761
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    50000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "IMAGE/PNG",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    1000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    1000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    10485759
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    10485760
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    10485761
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    50000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "application/pdf",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    1000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    1000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    10485759
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    10485760
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    10485761
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    50000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    1000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    1000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    10485759
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    10485760
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    10485761
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    50000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "audio/webm",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    1000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    1000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    10485759
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    10485760
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    10485761
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    50000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "video/mp4",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    0
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    1000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    1000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    10485759
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    10485760
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    10485761
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    50000000
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  },
+  {
+   "input": [
+    "text/plain",
+    -1
+   ],
+   "out": {
+    "ok": "Choisissez une image."
+   }
+  }
+ ]
+}

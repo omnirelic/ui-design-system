@@ -1,0 +1,1745 @@
+[
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,q_auto,f_auto/v1/sample.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/sample.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,q_auto,f_auto/v1/upload/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/upload/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,q_auto,f_auto/w_100/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/w_100/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_80,h_80,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_80,h_60,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_112,h_112,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_1600,h_900,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_0,h_0,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_1,h_1,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_320.5,h_200,c_fill,q_auto,f_auto/v1/note.webm"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/video/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/note.webm"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_80,h_80,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_80,h_60,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_112,h_112,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_1600,h_900,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_0,h_0,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_1,h_1,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_320.5,h_200,c_fill,q_auto,f_auto/v1/doc.pdf"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/raw/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/doc.pdf"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,q_auto,f_auto/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "http://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/photo.png",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://example.com/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://example.com/upload/photo.png",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://example.com/upload/photo.png"
+  },
+  "watermark": {
+   "ok": "https://example.com/upload/photo.png"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://cdn.test/res.cloudinary.com/x.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  },
+  "watermark": {
+   "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://other.test/image/upload/v1/a.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  },
+  "watermark": {
+   "ok": "https://other.test/image/upload/v1/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   80,
+   80
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   80,
+   60
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   112,
+   112
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   0,
+   0
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   1,
+   1
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   null,
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   80,
+   80
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   80,
+   60
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   112,
+   112
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   0,
+   0
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   1,
+   1
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   {
+    "undef": true
+   },
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": null
+  },
+  "watermark": {
+   "ok": null
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "not a url",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "not a url"
+  },
+  "watermark": {
+   "ok": "not a url"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "/relative/upload/a.jpg",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "/relative/upload/a.jpg"
+  },
+  "watermark": {
+   "ok": "/relative/upload/a.jpg"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_80,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_80,h_60,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_112,h_112,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,h_900,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_0,h_0,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_1,h_1,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,q_auto,f_auto/v1/a.jpg?x=1#h"
+  },
+  "watermark": {
+   "ok": "https://res.cloudinary.com/demo/image/upload/w_320.5,h_200,c_fill,g_auto,q_auto,f_auto/l_text:Arial_20_bold:CHEZ%2520LA%2520PETITE,co_rgb:E8C88A,o_85,g_south_east,x_14,y_50/v1/a.jpg?x=1#h"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "blob:https://x.test/uuid",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "blob:https://x.test/uuid"
+  },
+  "watermark": {
+   "ok": "blob:https://x.test/uuid"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   80,
+   80
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   80,
+   60
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   112,
+   112
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   1600,
+   900
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   0,
+   0
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   1,
+   1
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ },
+ {
+  "input": [
+   "data:image/png;base64,AAAA",
+   320.5,
+   200
+  ],
+  "plain": {
+   "ok": "data:image/png;base64,AAAA"
+  },
+  "watermark": {
+   "ok": "data:image/png;base64,AAAA"
+  }
+ }
+]

@@ -1,0 +1,1952 @@
+[
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "image/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "image/png"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "capture.png",
+   "image/png",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "image/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   ".jpg"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.JPG",
+   "image/jpeg",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   ".jpg"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "photo.jpg",
+   "",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   ".pdf"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "contrat.pdf",
+   "application/pdf",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "CV.DOCX",
+   "",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "note.webm",
+   "audio/webm",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "a",
+   "",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "",
+   "",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "archive.tar.gz",
+   "application/gzip",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "image/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "image.svg",
+   "image/svg+xml",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   ".pdf"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "x.PDF",
+   "APPLICATION/PDF",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "image/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "vide.mp4",
+   "video/mp4",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   ""
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "image/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "IMAGE/*"
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   ".pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   ".pdf,application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   ".pdf, .doc, .docx"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "image/png"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "image/png,image/jpeg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "audio/*,video/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   " image/* , .pdf "
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   ","
+  ],
+  "out": {
+   "ok": true
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "*/*"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   ".jpg"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "application/pdf"
+  ],
+  "out": {
+   "ok": false
+  }
+ },
+ {
+  "input": [
+   "noext",
+   "image/heic",
+   "text/plain"
+  ],
+  "out": {
+   "ok": false
+  }
+ }
+]

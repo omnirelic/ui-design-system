@@ -1,0 +1,84 @@
+// Générateur des valeurs de référence du lot 8 : exécute le VRAI code de Chez la Petite (chezlapetite origin/dev) et écrit ses sorties en JSON.
+// Aucune photo ni voix réelle : seulement des noms de fichier et des URL fabriqués.
+import { writeFileSync, mkdirSync } from "node:fs";
+import { describe, it } from "vitest";
+import { mediaDownloadUrl, mediaViewUrl, sortGallery } from "../src/admin/ui/image-viewer-urls";
+import { cdnUrl, cdnUrlWatermarked } from "../src/lib/cdn";
+import { matchesAccept } from "../src/ui/file-drop";
+import { checkProofFile, MAX_PROOF_BYTES } from "../src/tracking/proof-file";
+import { formatDuration, pickMime } from "../src/chat/chat-voice";
+import { waveBars, seekRatio, nextSpeed, speedLabel, BARS, SPEEDS } from "../src/chat/chat-wave";
+
+const OUT = "<scratchpad>/clp8/out"; // dossier de sortie du poste qui régénère
+const run = <T>(f: () => T): { ok: T } | { throw: string } => { try { return { ok: f() }; } catch (e) { return { throw: String((e as Error).constructor.name) }; } };
+
+const urls: (string | null | undefined)[] = [
+  "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+  "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+  "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+  "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+  "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+  "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+  "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+  "https://example.com/photo.png", "https://example.com/upload/photo.png", "https://cdn.test/res.cloudinary.com/x.jpg",
+  "https://other.test/image/upload/v1/a.jpg", "", null, undefined, "not a url", "/relative/upload/a.jpg",
+  "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h", "blob:https://x.test/uuid", "data:image/png;base64,AAAA",
+];
+const sizes: [number, number][] = [[80, 80], [80, 60], [112, 112], [1600, 900], [0, 0], [1, 1], [320.5, 200]];
+
+const files = [
+  ["capture.png", "image/png"], ["photo.JPG", "image/jpeg"], ["photo.jpg", ""], ["contrat.pdf", "application/pdf"], ["CV.DOCX", ""], ["note.webm", "audio/webm"],
+  ["a", ""], ["", ""], ["archive.tar.gz", "application/gzip"], ["image.svg", "image/svg+xml"], ["x.PDF", "APPLICATION/PDF"], ["vide.mp4", "video/mp4"], ["noext", "image/heic"],
+];
+const accepts = ["", "image/*", "IMAGE/*", ".pdf", ".pdf,application/pdf", ".pdf, .doc, .docx", "image/png", "image/png,image/jpeg", "audio/*,video/*", " image/* , .pdf ", ",", "*/*", ".jpg", "application/pdf", "text/plain"];
+
+const proofSizes = [0, 1, 1000, 1_000_000, MAX_PROOF_BYTES - 1, MAX_PROOF_BYTES, MAX_PROOF_BYTES + 1, 50_000_000, -1];
+const proofTypes = ["image/jpeg", "image/png", "image/heic", "image/", "IMAGE/PNG", "application/pdf", "", "audio/webm", "video/mp4", "text/plain"];
+
+const supportSets = [
+  [], ["audio/webm;codecs=opus"], ["audio/mp4"], ["audio/webm"], ["audio/ogg;codecs=opus"], ["audio/mp4", "audio/webm"], ["audio/webm", "audio/ogg;codecs=opus"],
+  ["audio/webm;codecs=opus", "audio/mp4", "audio/webm", "audio/ogg;codecs=opus"], ["audio/wav"], ["audio/ogg;codecs=opus", "audio/mp4"],
+];
+const seconds = [0, -5, 0.4, 0.5, 0.6, 1, 1.49, 1.5, 2.5, 59, 59.5, 60, 61, 125.4, 599, 3599.6, 3600, 7325, 1e6, NaN, Infinity, -Infinity];
+const seeds = ["", "a", "msg-1", "https://res.cloudinary.com/demo/video/upload/v1/note.webm", "é", "voice-0000", "x".repeat(200)];
+const seeks: [number, number, number][] = [[50, 0, 100], [0, 0, 100], [100, 0, 100], [150, 0, 100], [-20, 0, 100], [30, 10, 0], [30, 10, -5], [55.5, 10, 90], [10, 10, 100]];
+
+describe("génération", () => {
+  it("écrit les sorties de CLP", () => {
+    mkdirSync(OUT, { recursive: true });
+    const w = (name: string, data: unknown) => writeFileSync(`${OUT}/${name}.json`, JSON.stringify(data, null, 1) + "\n");
+
+    w("clp-image-urls", {
+      view: urls.map((u) => ({ input: u === undefined ? { undef: true } : u, out: run(() => mediaViewUrl(u as string)) })),
+      download: urls.map((u) => ({ input: u === undefined ? { undef: true } : u, out: run(() => mediaDownloadUrl(u as string)) })),
+      sort: [
+        [],
+        [{ id: "a", url: "u" }],
+        [{ id: "c", at: "2026-10-28T10:00:00Z" }, { id: "a", at: "2026-10-28T08:00:00Z" }, { id: "b", at: "2026-10-28T08:00:00Z" }, { id: "z" }, { id: "y", at: null }],
+        [{ id: "1", at: "pas une date" }, { id: "2", at: "2026-01-01T00:00:00Z" }, { id: "3", at: "" }, { id: "4", at: "2025-12-31T23:59:59Z" }],
+        [{ id: "1" }, { id: "2" }, { id: "3" }],
+        [{ id: "x", at: "2026-10-28T10:00:00+01:00" }, { id: "y", at: "2026-10-28T09:00:00Z" }, { id: "z", at: "2026-10-28T09:00:00.000Z" }],
+      ].map((input) => ({ input, out: run(() => sortGallery(input as never).map((i: { id: string }) => i.id)) })),
+    });
+
+    const cdn: unknown[] = [];
+    for (const u of urls) for (const [a, b] of sizes) cdn.push({ input: [u === undefined ? { undef: true } : u, a, b], plain: run(() => cdnUrl(u as string, a, b)), watermark: run(() => cdnUrlWatermarked(u as string, a, b)) });
+    w("clp-cdn", cdn);
+
+    const accept: unknown[] = [];
+    for (const [name, type] of files) for (const a of accepts) accept.push({ input: [name, type, a], out: run(() => matchesAccept({ name, type }, a)) });
+    w("clp-file-accept", accept);
+
+    const proof: unknown[] = [];
+    for (const type of proofTypes) for (const size of proofSizes) proof.push({ input: [type, size], out: run(() => checkProofFile({ type, size })) });
+    w("clp-proof-file", { max: MAX_PROOF_BYTES, cases: proof });
+
+    w("clp-voice", {
+      duration: seconds.map((s) => ({ input: Number.isNaN(s) ? "NaN" : s === Infinity ? "Infinity" : s === -Infinity ? "-Infinity" : s, out: run(() => formatDuration(s)) })),
+      mime: supportSets.map((set) => ({ input: set, out: run(() => pickMime((t) => set.includes(t)) ?? null) })),
+      bars: { count: BARS, speeds: [...SPEEDS], seeds: seeds.map((s) => ({ input: s, out: run(() => waveBars(s)), short: run(() => waveBars(s, 7)) })) },
+      seek: seeks.map((a) => ({ input: a, out: run(() => seekRatio(...a)) })),
+      speed: [...SPEEDS, 0, 3, 1.25].map((s) => ({ input: s, next: run(() => nextSpeed(s)), label: run(() => speedLabel(s)) })),
+    });
+  });
+});
