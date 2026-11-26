@@ -13,9 +13,13 @@ export type ModalProps = {
   title: string;
   children: ReactNode;
   footer?: ReactNode;
+  /** Largeur max du cadre (px), 380 par défaut. */
+  maxWidth?: number;
+  /** Étage (60 par défaut) : à relever pour s'ouvrir au-dessus d'un tiroir. */
+  zIndex?: number;
 };
 
-export function Modal({ open, onClose, title, children, footer }: ModalProps) {
+export function Modal({ open, onClose, title, children, footer, maxWidth = 380, zIndex = 60 }: ModalProps) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
@@ -27,9 +31,9 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
   return (
     <div
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-      style={{ position: "fixed", inset: 0, zIndex: 60, background: shades.overlay, display: "flex", alignItems: "center", justifyContent: "center", padding: 20, backdropFilter: "blur(4px)" }}
+      style={{ position: "fixed", inset: 0, zIndex, background: shades.overlay, display: "flex", alignItems: "center", justifyContent: "center", padding: 20, backdropFilter: "blur(4px)" }}
     >
-      <div style={{ width: "100%", maxWidth: 380, maxHeight: "85vh", display: "flex", flexDirection: "column", background: CARD, border: `1px solid ${BORDER}`, borderRadius: radius.lg + 4, boxShadow: "0 24px 60px rgba(0,0,0,.5)", overflow: "hidden" }}>
+      <div style={{ width: "100%", maxWidth, maxHeight: "85vh", display: "flex", flexDirection: "column", background: CARD, border: `1px solid ${BORDER}`, borderRadius: radius.lg + 4, boxShadow: "0 24px 60px rgba(0,0,0,.5)", overflow: "hidden" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 18px", borderBottom: `1px solid ${BORDER}`, flexShrink: 0 }}>
           <div style={{ fontSize: FONT.base, fontWeight: 800, color: TXT }}>{title}</div>
           <Reactive

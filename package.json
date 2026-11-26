@@ -50,6 +50,9 @@
     "pretest": "node scripts/generate-catalog-meta.mjs",
     "test": "vitest run"
   },
+  "dependencies": {
+    "@phosphor-icons/react": "2.1.10"
+  },
   "peerDependencies": {
     "react": ">=18",
     "react-qr-code": ">=2",
@@ -74,7 +77,7 @@
     "vitest": "^2.1.9",
     "react-dom": "^18.3.1",
     "react-router-dom": "7.15.1",
-    "jsdom": "25.0.1",
-    "@types/react-dom": "^18.3.1"
+    "@types/react-dom": "^18.3.1",
+    "jsdom": "25.0.1"
   }
 }
