@@ -1,4 +1,4 @@
-if (!superadmin) return <>{children}</>;// Numéro masqué à l'écran (web/src/admin/ui/entity/MaskedPhone.tsx de Chez la Petite) : le drapeau du pays remplace l'indicatif (« +237 »), puis l'opérateur
+// Numéro masqué à l'écran (web/src/admin/ui/entity/MaskedPhone.tsx de Chez la Petite) : le drapeau du pays remplace l'indicatif (« +237 »), puis l'opérateur
 // (ORANGE, MTN, INCONNU) et les 2 derniers chiffres. Ancien format du serveur : pas d'opérateur, les points restent. `flag` éteint : l'indicatif s'écrit comme avant
 // (CLP : réglage `admin_phone_flag`, activé par défaut). Pour copier ou lire à haute voix : `maskPhoneText`.
 // `profileId` (et `identifierId` pour un numéro précis du profil) : le SUPERADMIN voit le numéro en clair au survol ou au focus (un appel par survol, journalisé côté
@@ -32,7 +32,7 @@ function RevealOnHover({ profileId, identifierId, children }: { profileId: strin
   const superadmin = reveal.useViewerIsSuperadmin();
   const [open, setOpen] = useState(false);
   const [clear, setClear] = useState<string | null>(null);
-  
+  if (!superadmin) return <>{children}</>;
   const onOpenChange = (next: boolean) => {
     setOpen(next);
     if (!next) { setClear(null); return; } // le numéro ne reste pas dans le DOM une fois la bulle fermée
