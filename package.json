@@ -1,9 +1,8 @@
 {
   "name": "@omnirelic/ui-design-system",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.3.0-alpha.11",
   "type": "module",
-  "description": "Identité visuelle omnirelic — tokens + composants React (web aujourd'hui, React Native demain) consommés par tous les providers du réseau.",
+  "description": "Identité visuelle omnirelic — tokens + composants React (web + React Native) consommés par tous les providers du réseau.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -11,24 +10,115 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./pastille": {
+      "types": "./dist/web/entry-pastille.d.ts",
+      "default": "./dist/web/entry-pastille.js"
+    },
+    "./state": {
+      "types": "./dist/web/entry-state.d.ts",
+      "default": "./dist/web/entry-state.js"
+    },
+    "./query-params": {
+      "types": "./dist/web/entry-query-params.d.ts",
+      "default": "./dist/web/entry-query-params.js"
+    },
+    "./entity-graph": {
+      "types": "./dist/web/entry-entity-graph.d.ts",
+      "default": "./dist/web/entry-entity-graph.js"
+    },
+    "./entity": {
+      "types": "./dist/web/entry-entity.d.ts",
+      "default": "./dist/web/entry-entity.js"
+    },
+    "./masked-phone": {
+      "types": "./dist/web/entry-masked-phone.d.ts",
+      "default": "./dist/web/entry-masked-phone.js"
+    },
+    "./search": {
+      "types": "./dist/web/entry-search.d.ts",
+      "default": "./dist/web/entry-search.js"
+    },
+    "./amounts": {
+      "types": "./dist/web/entry-amounts.d.ts",
+      "default": "./dist/web/entry-amounts.js"
+    },
+    "./images": {
+      "types": "./dist/web/entry-images.d.ts",
+      "default": "./dist/web/entry-images.js"
+    },
+    "./image-gallery": {
+      "types": "./dist/web/entry-image-gallery.d.ts",
+      "default": "./dist/web/entry-image-gallery.js"
+    },
+    "./voice": {
+      "types": "./dist/web/entry-voice.d.ts",
+      "default": "./dist/web/entry-voice.js"
+    },
+    "./admin-shell": {
+      "types": "./dist/web/entry-admin-shell.d.ts",
+      "default": "./dist/web/entry-admin-shell.js"
+    },
+    "./admin-shell-router": {
+      "types": "./dist/web/entry-admin-shell-router.d.ts",
+      "default": "./dist/web/entry-admin-shell-router.js"
+    },
+    "./phone": {
+      "types": "./dist/web/entry-phone.d.ts",
+      "default": "./dist/web/entry-phone.js"
+    },
     "./tokens": {
       "types": "./dist/tokens.d.ts",
       "default": "./dist/tokens.js"
+    },
+    "./catalog": {
+      "types": "./dist/catalog/index.d.ts",
+      "default": "./dist/catalog/index.js"
+    },
+    "./native": {
+      "types": "./dist/native/index.d.ts",
+      "default": "./dist/native/index.js"
     }
   },
   "files": ["dist"],
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "repository": { "type": "git", "url": "https://github.com/omnirelic/ui-design-system.git" },
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks",
+    "prebuild": "node scripts/generate-catalog-meta.mjs",
     "build": "tsc -b",
-    "dev": "tsc -b --watch"
+    "dev": "tsc -b --watch",
+    "pretest": "node scripts/generate-catalog-meta.mjs",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@floating-ui/react": "0.27.20",
+    "@phosphor-icons/react": "2.1.10"
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-qr-code": ">=2"
+    "react-qr-code": ">=2",
+    "libphonenumber-js": ">=1.13",
+    "react-router-dom": ">=6"
+  },
+  "peerDependenciesMeta": {
+    "libphonenumber-js": { "optional": true },
+    "react-router-dom": { "optional": true }
   },
   "devDependencies": {
     "@types/react": "^18.3.1",
     "react": "^18.3.1",
     "react-qr-code": "^2.2.0",
-    "typescript": "^5.6.3"
+    "libphonenumber-js": "^1.11.0",
+    "react-native": "^0.76.9",
+    "react-native-svg": "^15.8.0",
+    "expo-camera": "^16.0.18",
+    "expo-linear-gradient": "^14.0.2",
+    "phosphor-react-native": "^3.0.6",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.9",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "7.15.1",
+    "@types/react-dom": "^18.3.1",
+    "jsdom": "25.0.1"
   }
 }

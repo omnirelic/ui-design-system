@@ -1,0 +1,362 @@
+{
+ "view": [
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,c_limit,q_auto,f_auto/v1/sample.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,c_limit,q_auto,f_auto/v1/upload/x.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,c_limit,q_auto,f_auto/w_100/v1/a.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/video/upload/w_1600,c_limit,q_auto,f_auto/v1/note.webm"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/raw/upload/w_1600,c_limit,q_auto,f_auto/v1/doc.pdf"
+   }
+  },
+  {
+   "input": "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   "out": {
+    "ok": "http://res.cloudinary.com/demo/image/upload/w_1600,c_limit,q_auto,f_auto/v1/a.jpg"
+   }
+  },
+  {
+   "input": "https://example.com/photo.png",
+   "out": {
+    "ok": "https://example.com/photo.png"
+   }
+  },
+  {
+   "input": "https://example.com/upload/photo.png",
+   "out": {
+    "ok": "https://example.com/upload/photo.png"
+   }
+  },
+  {
+   "input": "https://cdn.test/res.cloudinary.com/x.jpg",
+   "out": {
+    "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+   }
+  },
+  {
+   "input": "https://other.test/image/upload/v1/a.jpg",
+   "out": {
+    "ok": "https://other.test/image/upload/v1/a.jpg"
+   }
+  },
+  {
+   "input": "",
+   "out": {
+    "ok": ""
+   }
+  },
+  {
+   "input": null,
+   "out": {
+    "throw": "TypeError"
+   }
+  },
+  {
+   "input": {
+    "undef": true
+   },
+   "out": {
+    "throw": "TypeError"
+   }
+  },
+  {
+   "input": "not a url",
+   "out": {
+    "ok": "not a url"
+   }
+  },
+  {
+   "input": "/relative/upload/a.jpg",
+   "out": {
+    "ok": "/relative/upload/a.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/w_1600,c_limit,q_auto,f_auto/v1/a.jpg?x=1#h"
+   }
+  },
+  {
+   "input": "blob:https://x.test/uuid",
+   "out": {
+    "ok": "blob:https://x.test/uuid"
+   }
+  },
+  {
+   "input": "data:image/png;base64,AAAA",
+   "out": {
+    "ok": "data:image/png;base64,AAAA"
+   }
+  }
+ ],
+ "download": [
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/v1/sample.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/fl_attachment/v1/sample.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/v1/upload/x.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/fl_attachment/v1/upload/x.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/w_100/v1/a.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/fl_attachment/w_100/v1/a.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/video/upload/v1/note.webm",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/video/upload/fl_attachment/v1/note.webm"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/fetch/https://x.test/a.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/raw/upload/v1/doc.pdf",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/raw/upload/fl_attachment/v1/doc.pdf"
+   }
+  },
+  {
+   "input": "http://res.cloudinary.com/demo/image/upload/v1/a.jpg",
+   "out": {
+    "ok": "http://res.cloudinary.com/demo/image/upload/fl_attachment/v1/a.jpg"
+   }
+  },
+  {
+   "input": "https://example.com/photo.png",
+   "out": {
+    "ok": "https://example.com/photo.png"
+   }
+  },
+  {
+   "input": "https://example.com/upload/photo.png",
+   "out": {
+    "ok": "https://example.com/upload/photo.png"
+   }
+  },
+  {
+   "input": "https://cdn.test/res.cloudinary.com/x.jpg",
+   "out": {
+    "ok": "https://cdn.test/res.cloudinary.com/x.jpg"
+   }
+  },
+  {
+   "input": "https://other.test/image/upload/v1/a.jpg",
+   "out": {
+    "ok": "https://other.test/image/upload/v1/a.jpg"
+   }
+  },
+  {
+   "input": "",
+   "out": {
+    "ok": ""
+   }
+  },
+  {
+   "input": null,
+   "out": {
+    "throw": "TypeError"
+   }
+  },
+  {
+   "input": {
+    "undef": true
+   },
+   "out": {
+    "throw": "TypeError"
+   }
+  },
+  {
+   "input": "not a url",
+   "out": {
+    "ok": "not a url"
+   }
+  },
+  {
+   "input": "/relative/upload/a.jpg",
+   "out": {
+    "ok": "/relative/upload/a.jpg"
+   }
+  },
+  {
+   "input": "https://res.cloudinary.com/demo/image/upload/v1/a.jpg?x=1#h",
+   "out": {
+    "ok": "https://res.cloudinary.com/demo/image/upload/fl_attachment/v1/a.jpg?x=1#h"
+   }
+  },
+  {
+   "input": "blob:https://x.test/uuid",
+   "out": {
+    "ok": "blob:https://x.test/uuid"
+   }
+  },
+  {
+   "input": "data:image/png;base64,AAAA",
+   "out": {
+    "ok": "data:image/png;base64,AAAA"
+   }
+  }
+ ],
+ "sort": [
+  {
+   "input": [],
+   "out": {
+    "ok": []
+   }
+  },
+  {
+   "input": [
+    {
+     "id": "a",
+     "url": "u"
+    }
+   ],
+   "out": {
+    "ok": [
+     "a"
+    ]
+   }
+  },
+  {
+   "input": [
+    {
+     "id": "c",
+     "at": "2026-10-28T10:00:00Z"
+    },
+    {
+     "id": "a",
+     "at": "2026-10-28T08:00:00Z"
+    },
+    {
+     "id": "b",
+     "at": "2026-10-28T08:00:00Z"
+    },
+    {
+     "id": "z"
+    },
+    {
+     "id": "y",
+     "at": null
+    }
+   ],
+   "out": {
+    "ok": [
+     "a",
+     "b",
+     "c",
+     "z",
+     "y"
+    ]
+   }
+  },
+  {
+   "input": [
+    {
+     "id": "1",
+     "at": "pas une date"
+    },
+    {
+     "id": "2",
+     "at": "2026-01-01T00:00:00Z"
+    },
+    {
+     "id": "3",
+     "at": ""
+    },
+    {
+     "id": "4",
+     "at": "2025-12-31T23:59:59Z"
+    }
+   ],
+   "out": {
+    "ok": [
+     "4",
+     "2",
+     "1",
+     "3"
+    ]
+   }
+  },
+  {
+   "input": [
+    {
+     "id": "1"
+    },
+    {
+     "id": "2"
+    },
+    {
+     "id": "3"
+    }
+   ],
+   "out": {
+    "ok": [
+     "1",
+     "2",
+     "3"
+    ]
+   }
+  },
+  {
+   "input": [
+    {
+     "id": "x",
+     "at": "2026-10-28T10:00:00+01:00"
+    },
+    {
+     "id": "y",
+     "at": "2026-10-28T09:00:00Z"
+    },
+    {
+     "id": "z",
+     "at": "2026-10-28T09:00:00.000Z"
+    }
+   ],
+   "out": {
+    "ok": [
+     "x",
+     "y",
+     "z"
+    ]
+   }
+  }
+ ]
+}
