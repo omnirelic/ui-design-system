@@ -39,7 +39,7 @@ export const ENTITY_DEFS: Record<EntityKind, EntityDef<View>> = {
   admin_user:     { label: "Administrateur",  view: "users",        param: "user",     idIs: "uuid du compte admin", person: true },
   transaction:    { label: "Transaction",     view: "payments",     param: "tx",       idIs: "« <type>:<id> » (ex. order:123)", icon: "res-payments" },
   wallet_tier:    { label: "Forfait",         view: "settings",     param: "tier",     fixed: { group: "wallet" }, idIs: "id du forfait (palier) — ouvre sa fiche d'édition dans Paramètres > Portefeuille", icon: "ui-wallet" },
-  support_thread: { label: "Conversation",    view: "support",      param: "thread",   idIs: "id de la conversation", person: true, icon: "res-support" },
+  support_thread: { label: "Conversation",    view: "support",      param: "thread",   idIs: "id de la conversation", person: true, photo: false, icon: "res-support" },
   conversation:   { label: "Conversation WhatsApp", view: "whatsapp", param: "thread",   idIs: "id (nanoid) de la conversation WhatsApp — jamais le numéro, masqué côté serveur ; `?order=<id>` filtre le fil sur une commande", person: true },
   draft:          { label: "Panier",          view: "drafts",       param: "draft",    idIs: "id du panier", icon: "res-drafts" },
   asset:          { label: "Équipement",      view: "assets",       param: "asset",    idIs: "id (nanoid) de l'équipement", icon: "res-assets" },
