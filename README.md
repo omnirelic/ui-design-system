@@ -54,11 +54,20 @@ Reprises de `web/src/admin/ui` (`DataTable.tsx`, `Pager.tsx`, `EmptyState.tsx`, 
 - `SearchableSelect` : **déprécié**, API d'origine conservée (`value` nullable, `sub`, `pinnedOption`), rendu par `Select searchable` : le comportement est désormais celui de CLP. Migrer vers `Select`.
 - Styles posés une fois dans `<head>` (`omni-dt`, `omni-select`) ; `omni-controls` gagne la variante `seg`.
 
+## État dans l'URL et cache de ressources
+
+Repris tel quel de `web/src/admin/lib` de Chez la Petite (noms, signatures, comportements ; tests miroir dans `test/`).
+
+- `@omnirelic/ui-design-system/query-params` : `useQueryParam(key)`, `useSetQueryParams()`, `useQueryParamItem(key, items, getId, legacyIds?)`, `withQueryParam(prev, key, value)`. Les autres paramètres de l'URL sont toujours conservés (jamais de `setSearchParams` qui écrase) ; un identifiant inconnu donne `null`. Branché sur `react-router-dom` (peerDependency optionnelle, >= 6).
+- `@omnirelic/ui-design-system/state` : sans routeur. `createQueryParamHooks(adaptateur)` fabrique les trois mêmes hooks à partir de `() => [URLSearchParams, (prev => next) => void]` (adaptateur de test, autre routeur). Cache « stale-while-revalidate » : `swrJson` (copie locale puis réponse fraîche, requêtes identiques partagées, `ttlMs`, `quietStatuses`), `readSwr`/`writeSwr`/`setSwrScope`/`clearSwrCache` (IndexedDB cloisonné par utilisateur, repli mémoire, 7 jours), `registerResource`/`invalidateAdminResource`/`invalidateAfterWrite`/`isRelatedWrite` (une écriture relit les ressources liées), `useAdminResource`/`useAdminData`/`useSeededForm`, `liveResourceFor` (règles de CLP, remplaçables par `setLiveResourceRules`).
+- Branchements propres à l'application, injectés au démarrage (CLP les câble en dur) : `setAdminFetch(createAdminFetch({ pushError, reportNetworkSuccess, reportNetworkFailure, fetch }))` pour le toast d'erreur, la connectivité et le transport ; `setAdminChangesHook(hook)` pour l'abonnement temps réel. Sans injection : `fetch` simple, aucun toast, aucun abonnement.
+- Non repris : `useAdminChanges` réel (socket, `connectRealtime`, filet `useSafetyRefresh`), `error-bus`, `connectivity`.
+
 ## Catalogue
 
-`@omnirelic/ui-design-system/catalog` exporte `CATALOG` : tokens introspectés et composants web avec leurs états, une entrée par export public (racine et `/phone`) ou une exclusion motivée. `test/catalog-rules.test.ts` échoue si un export n'a ni l'un ni l'autre ; signatures et version sont générées au build (`scripts/generate-catalog-meta.mjs`).
+`@omnirelic/ui-design-system/catalog` exporte `CATALOG` : tokens introspectés et composants web avec leurs états, une entrée par export public (racine, `/phone`, `/state` et `/query-params`) ou une exclusion motivée. `test/catalog-rules.test.ts` échoue si un export n'a ni l'un ni l'autre ; signatures et version sont générées au build (`scripts/generate-catalog-meta.mjs`).
 
 ## Pairs (peerDependencies)
 
-- Web : `react` et `react-qr-code` (la racine exporte `QrCard`). `libphonenumber-js` seulement pour `/phone`.
+- Web : `react` et `react-qr-code` (la racine exporte `QrCard`). `libphonenumber-js` seulement pour `/phone`, `react-router-dom` seulement pour `/query-params`.
 - Natif (`/native`) : `react-native`, `react-native-svg`, `expo-camera`, `expo-linear-gradient`, `phosphor-react-native` sont à installer par l'app mobile ; ils ne sont **pas** déclarés en peerDependencies. GitHub Packages retire `peerDependenciesMeta` du registre : un peer natif, même marqué optionnel, fait échouer `npm install` (ERESOLVE) dans une app web.
