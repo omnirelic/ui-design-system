@@ -41,6 +41,28 @@ Repris tel quel de `web/src/admin/lib` de Chez la Petite (noms, signatures, comp
 - Branchements propres à l'application, injectés au démarrage (CLP les câble en dur) : `setAdminFetch(createAdminFetch({ pushError, reportNetworkSuccess, reportNetworkFailure, fetch }))` pour le toast d'erreur, la connectivité et le transport ; `setAdminChangesHook(hook)` pour l'abonnement temps réel. Sans injection : `fetch` simple, aucun toast, aucun abonnement.
 - Non repris : `useAdminChanges` réel (socket, `connectRealtime`, filet `useSafetyRefresh`), `error-bus`, `connectivity`.
 
+## Briques de base de Chez la Petite (lot 2)
+
+Reprises de `web/src/ui` et `web/src/admin/ui` de CLP (gelé) : mêmes props, états, tailles et comportements ; seules les couleurs passent par les jetons du thème (`--o-*`).
+
+- `Drawer` : panneau latéral droit (`open`, `onClose`, `title`, `crumbs`, `width` 560, `actions`, `footer`, `headerExtra`, `veil`, `outsideClose`, `bare`, `bodyRef`, `skin`), sortie animée 280 ms, fermeture par ×, Échap ou fond. Comme CLP : ni piège de focus ni rôle `dialog`.
+- `Alert` (`success`, `warning`, `error`, `info`), `Spinner` (24 px, 0,7 s), squelettes `Sk`, `SkRows`, `SkTable`, `SkGrid`, `SkBar`, `Pagination` (`page`, `totalPages`, `onChange`).
+- `ConfirmDialog` (modale 420 px, `danger`, `loading`, `zIndex`, `initialFocus`) ; `Modal` accepte désormais `maxWidth` (380) et `zIndex` (60).
+- `CopyButton` / `CopyTextButton` (icône → coche + « Copié » 1,8 s), `useCopied`, `writeClipboard` (repli `execCommand`).
+- `Icon` + `ICONS` : registre sémantique `res-`, `action-`, `status-`, `step-`, `ui-`, `state-`, `service-`, `loc-`, `kind-`, `nav-`, `pay-`, glyphes Phosphor (dépendance `@phosphor-icons/react` 2.1.10, un import par icône). Les couleurs en dur de CLP deviennent des tons du thème ; familles propres à l'admin ou au métier CLP non reprises.
+- Styles posés une fois dans `<head>` au chargement (`omni-controls`, `omni-spin`, `omni-sk`).
+
+## Tableau et menu déroulant de Chez la Petite (lot 3)
+
+Reprises de `web/src/admin/ui` (`DataTable.tsx`, `Pager.tsx`, `EmptyState.tsx`, `lib/usePagination.ts`) et `web/src/ui/Select.tsx` de CLP (gelé) : mêmes classes, mesures et clavier ; couleurs en jetons `--o-*`. CLP n'a ni tri, ni sélection par cases, ni en-tête collant, ni filtres de colonne : ils ne sont pas inventés ici.
+
+- `DataTable` (`columns`, `rows`, `rowKey`, `onRowClick`, `selectedKey`, `isHighlighted`, `renderExpanded`, `pageSize`, `resetKey`, `emptyTitle`, `emptyHint`) : grille en sous-grille, une carte arrondie par ligne (8 px, 0,625 / 0,875 rem), en-têtes 12 px en capitales espacées, planchers 112 px (`fr`) et 160 px (`auto`) avec défilement horizontal, cartes empilées sous 640 px, ligne cliquable au clavier (Entrée, Espace).
+- `Pager` + `usePagination` + `PAGE_SIZES` (10, 25, 50, 100) : « 1–10 sur 30 », fenêtre 1 … n-1 n n+1 … N, choix « n / page ». Distinct de `Pagination` (simple).
+- `EmptyState` (`icon`, `title`, `hint`, `action`).
+- `Select` : portail en `position: fixed`, ouverture vers le haut si la place manque, flèches, Début, Fin, Entrée, Échap, focus rendu au déclencheur, recherche sans accent ni casse (`searchable`), variante icône, `bare`, `uiSize` sm / md, `height`, `width`. Ajouts omnirelic, absents de CLP et sans effet quand omis : `placeholder`, `searchPlaceholder`, `SelectOption.pinned`.
+- `SearchableSelect` : **déprécié**, API d'origine conservée (`value` nullable, `sub`, `pinnedOption`), rendu par `Select searchable` : le comportement est désormais celui de CLP. Migrer vers `Select`.
+- Styles posés une fois dans `<head>` (`omni-dt`, `omni-select`) ; `omni-controls` gagne la variante `seg`.
+
 ## Catalogue
 
 `@omnirelic/ui-design-system/catalog` exporte `CATALOG` : tokens introspectés et composants web avec leurs états, une entrée par export public (racine, `/phone`, `/state` et `/query-params`) ou une exclusion motivée. `test/catalog-rules.test.ts` échoue si un export n'a ni l'un ni l'autre ; signatures et version sont générées au build (`scripts/generate-catalog-meta.mjs`).
